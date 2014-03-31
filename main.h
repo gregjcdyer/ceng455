@@ -4,7 +4,7 @@
 #define BANDPASS_TASK 11
 #define ISR_TASK 9
 
-#define MAX_FILTER_LEN 101
+#define MAX_FILTER_LEN 33
 
 typedef enum {
    term_in,
