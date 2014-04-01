@@ -1,10 +1,7 @@
 #define MAIN_TASK  10
 #define LOWPASS_TASK 11
-#define HIGHPASS_TASK 11
-#define BANDPASS_TASK 11
-#define ISR_TASK 9
 
-#define MAX_FILTER_LEN 50
+#define MAX_FILTER_LEN 17
 
 typedef enum {
    term_in,
@@ -22,11 +19,7 @@ void adc_init();
 void adcISR();
 void setupISR();
 
-void apply_filter(filter_type type);
-
 void add_sample(int sample);
-void set_lowpass_hw(int_32 sample_freq, int_32 cutoff_freq);
-void set_lowpass_hw_slow(int cutoff_freq, int sample_freq);
 
 typedef struct   td_struct {
    struct td_struct            _PTR_ TD_NEXT;
