@@ -42,92 +42,21 @@
 #include "init.h"
 #include "my_math.h"
 
-extern void main_task(uint_32);
-extern void lowpass_task(uint_32);
-extern void highpass_task(uint_32);
-extern void bandpass_task(uint_32);
-extern void isr_task(uint_32);
 
 TIME_STRUCT time_global1;
 TIME_STRUCT time_global2;
 uint_32 time_int = 0;
 int counter = 0;
 
-
 uint_32 uartRegisterMask = 0;
 
+// Pointer to struct for ADC functions
 VMCF5225_STRUCT_PTR reg_ptr = (VMCF5225_STRUCT_PTR)BSP_IPSBAR;
 
 #define pi 3.1415962
 #define CUTOFF 100
 #define SAMPLING_FREQUENCY 2075
-/*
 
-FIR filter designed with
-http://t-filter.appspot.com
-
-sampling frequency: 2000 Hz
-
-fixed point precision: 16 bits
-
-* 0 Hz - 400 Hz
-  gain = 1
-  desired ripple = 5 dB
-  actual ripple = n/a
-
-* 500 Hz - 1000 Hz
-  gain = 0
-  desired attenuation = -60 dB
-  actual attenuation = n/a
-
-*/
-
-/*
-
-FIR filter designed with
-http://t-filter.appspot.com
-
-sampling frequency: 2000 Hz
-
-fixed point precision: 16 bits
-
-* 0 Hz - 400 Hz
-  gain = 1
-  desired ripple = 5 dB
-  actual ripple = n/a
-
-* 500 Hz - 1000 Hz
-  gain = 0
-  desired attenuation = -35 dB
-  actual attenuation = n/a
-
-*/
-
-#define FILTER_TAP_NUM 19
-
-/*static int lowpass_hw[FILTER_TAP_NUM] = {
-  -1617,
-  -1182,
-  2153,
-  5648,
-  3908,
-  -2697,
-  -5168,
-  4330,
-  20679,
-  28879,
-  20679,
-  4330,
-  -5168,
-  -2697,
-  3908,
-  5648,
-  2153,
-  -1182,
-  -1617
-};
-
-*/
 
 float lowpass_hw[MAX_FILTER_LEN] = {
 0.0003, 0.0009, 0.0013, 0.0014, 0.0007, -0.0009, -0.0029, -0.0046, -0.0047, -0.0022, 0.0028, 0.0089, 0.0133, 0.0130, 0.0060, -0.0072, -0.0227, -0.0340, -0.0336, -0.0159, 0.0202, 0.0700, 0.1240, 0.1698, 0.1960, 0.1960, 0.1698, 0.1240, 0.0700, 0.0202, -0.0159, -0.0336, -0.0340, -0.0227, -0.0072, 0.0060, 0.0130, 0.0133, 0.0089, 0.0028, -0.0022, -0.0047, -0.0046, -0.0029, -0.0009, 0.0007, 0.0014, 0.0013, 0.0009, 0.0003
@@ -146,6 +75,8 @@ int sample_start = 0;
 int sample_end = 0;
 int filter_flag = 0;
 
+char enabled_filter = 10;
+
 TASK_TEMPLATE_STRUCT  MQX_template_list[] = 
 { 
     {MAIN_TASK,     main_task,     700, 3, "main",     MQX_TIME_SLICE_TASK | MQX_AUTO_START_TASK, 0, 0},
@@ -156,167 +87,98 @@ TASK_TEMPLATE_STRUCT  MQX_template_list[] =
     {0,          0,          0,   0, 0,       0,                   0, 0}
 };
 
-void adc_init() {
-    reg_ptr -> ADC.POWER &= ~(MCF_ADC_POWER_APD | MCF_ADC_POWER_PD0);
-    reg_ptr -> ADC.POWER |= MCF_ADC_POWER_PD1;
-    while(MCF_ADC_POWER & MCF_ADC_POWER_PSTS0);
-    reg_ptr -> ADC.CTRL2 = 0x0008;
-    reg_ptr -> ADC.ADSDIS = 0x00FE;
-    reg_ptr -> ADC.CTRL1 = 0x2802;
-}
-
-void adcISR() {
-    _int_disable();
-
-    add_sample((uint_32)((reg_ptr -> ADC.ADRSLT[0]) >> 3));
-
-    _int_enable();
-}
-
-void setupISR() {
-    _int_disable();
-
-    uartRegisterMask = MCF_UART_UIMR_FFULL_RXRDY;
-	MCF_UART0_UMR2 |= MCF_UART_UMR_CM_NORMAL;
-
-    // Initialize ADC interrupt
-    MCF_INTC0_IMRH &= ~MCF_INTC_IMRL_MASKALL;
-    MCF_INTC0_IMRH &= ~MCF_INTC_IMRH_INT_MASK49;
-    MCF_INTC0_IMRL &= ~MCF_INTC_IMRL_MASKALL;
-    MCF_INTC0_ICR49 |= MCF_INTC_ICR_IP(0x5) | MCF_INTC_ICR_IL(0x5);
-    _int_install_isr(64+49, &adcISR, NULL);
-
-    _int_enable();
-}
-
+// Adds an ADC sample to the circular buffers
 void add_sample(int sample) {
 
     sample_start = (sample_start + 1) % MAX_FILTER_LEN;
-
     samples[sample_end] = sample;
     sample_end = (sample_end + 1) % MAX_FILTER_LEN;
 }
 
-void set_lowpass_hw(int_32 cutoff_freq, int_32 sample_freq) {
-    int i = 0, midpoint = MAX_FILTER_LEN - 1;
-    float trans_freq, hw_sum = 0;
-
-    lowpass_tid = _task_get_id();
-
-    trans_freq = (float)cutoff_freq / (float)sample_freq;
-
-    for(i = 0; i < MAX_FILTER_LEN; i++) {
-        float h;
-        if(i == (int)(midpoint / 2)) {
-            h = 2*trans_freq;
-        } else {
-            h = (my_sin(2 * MY_PI * trans_freq * ( i+ 1 - midpoint / 2)) / (MY_PI * (i + 1 - midpoint / 2)));
-        }
-
-        lowpass_hw[i] = h * (0.5 * (1 - my_cos(2 * MY_PI * i / (MAX_FILTER_LEN - 1))));
-
-        if(lowpass_hw[i] >= 0) {
-            hw_sum += lowpass_hw[i];
-        } else {
-            hw_sum += -lowpass_hw[i];
-        }
-    }
-
-    for(i = 0; i < MAX_FILTER_LEN; i++) {
-        lowpass_hw[i] = lowpass_hw[i] / hw_sum;
-    }
-}
-
-void set_lowpass_hw_slow(int cutoff_freq, int sample_freq) {
-	int i, midpoint = MAX_FILTER_LEN - 1;
-	float trans_freq, hw_sum = 0.0;
-	float h[MAX_FILTER_LEN] = {0.0, };
-	float hw[MAX_FILTER_LEN] = {0.0, };
-    float w[MAX_FILTER_LEN] = {0.0, 0.030154, 0.116978, 0.250001, 0.413177,
-                               0.586825, 0.750001, 0.883021, 0.969847, 1.0,
-                               0.969847, 0.883021, 0.750001, 0.586825, 0.413177,
-                               0.250001, 0.116978, 0.030154};
-
-	trans_freq = (float)cutoff_freq / (float)sample_freq;
-
-	for(i = 0; i < MAX_FILTER_LEN; i++) {
-		if(i == midpoint / 2) {
-			h[i] = 2 * trans_freq;
-		} else {
-			h[i] = my_sin(2 * MY_PI * trans_freq * (i - midpoint / 2)) / (MY_PI * (i - midpoint / 2));
-		}
-	}
-
-	/*for(i = 0; i < MAX_FILTER_LEN; i++) {
-		w[i] = 0.5 * (1 - my_cos(2 * MY_PI * i / midpoint));
-	}*/
-
-	for(i = 0; i < MAX_FILTER_LEN; i++) {
-		hw[i] = h[i] * w[i];
-	}
-
-	for(i = 0; i < MAX_FILTER_LEN; i++) {
-		hw_sum += abs(hw[i]);
-	}
-
-	for(i = 0; i < MAX_FILTER_LEN; i++) {
-		hw[i] = hw[i] / hw_sum;
-        lowpass_hw[i] = hw[i];
-	}
-}
-
-extern void main_task(uint_32 initial_data) {
+void main_task(uint_32 initial_data) {
 
     lowpass_tid = _task_create(0, LOWPASS_TASK, 0);
     if (lowpass_tid == MQX_NULL_TASK_ID){
         printf("Unable to create lowpass task!\n");
         _task_block();
     }
+    highpass_tid = _task_create(0, HIGHPASS_TASK, 0);
+    if (highpass_tid == MQX_NULL_TASK_ID){
+        printf("Unable to create highpass task!\n");
+        _task_block();
+    }
 
-    adc_init();
+    bandpass_tid = _task_create(0, BANDPASS_TASK, 0);
+    if (bandpass_tid == MQX_NULL_TASK_ID){
+        printf("Unable to create bandpass task!\n");
+        _task_block();
+    }
+
+
+    init_adc();
     init_pins();
     init_qspi();
 
     while(1) {
+        // hard coded for now, 
+        // TODO: take the filter type from command line
+        enabled_filter = lowpass;
         _task_block();
     }
 }
 
-extern void lowpass_task(uint_32 initial_data) {
-    int i, j, sum;
+void lowpass_task(uint_32 initial_data) {
+    int sum=0;
 
     while(1) {
-        sum = 0;        
-        j = sample_start;
-        for (i = 0; i < MAX_FILTER_LEN; i++){
-            sum += samples[j] * lowpass_hw[i];
-            j = (j + 1) % MAX_FILTER_LEN;
-        }
 
-        sum = (sum > 4095) ? (4095) : ((int)sum);
-        MCF_QSPI_QAR = 0x0000;
-        MCF_QSPI_QDR = ((int)sum | 0x3000);
+        // run the filter
+        sum = apply_filter(lowpass);
         
+        // send the sum to be outputted
+        output_signal(sum, channel_a, lowpass);
+
+        // block until the next sample is ready
         _task_block();
     }
 }
 
-extern void highpass_task(uint_32 initial_data) {
+void highpass_task(uint_32 initial_data) {
+    int sum=0;
+
     while(1) {
 
+        // run the filter
+        sum = apply_filter(highpass);
+        
+        // send the sum to be outputted
+        output_signal(sum, channel_a, highpass);
+
+        // block until the next sample is ready
+        _task_block();
     }
 }
 
-extern void bandpass_task(uint_32 initial_data) {
+void bandpass_task(uint_32 initial_data) {
+    int sum=0;
+
     while(1) {
 
+        // run the filter
+        sum = apply_filter(bandpass);
+        
+        // send the sum to be outputted
+        output_signal(sum, channel_a, bandpass);
+
+        // block until the next sample is ready
+        _task_block();
     }
 }
 
-extern void isr_task(uint_32 initial_data) {
-    TD_STRUCT_PTR lowpass_td_ptr;
+void isr_task(uint_32 initial_data) {
+    uint_32         sample_read = 0;
+    TD_STRUCT_PTR   lowpass_td_ptr;
     MQX_TICK_STRUCT ticks;
-    uint_32 sample_read = 0;
     
     lowpass_td_ptr = _task_get_td(lowpass_tid);
 
@@ -333,34 +195,31 @@ extern void isr_task(uint_32 initial_data) {
         // only for debugging purposes. 
         sample_read = (uint_32)((reg_ptr -> ADC.ADRSLT[0]) >> 3);
 
+        // Add sample to circular buffers
         add_sample(sample_read);
 
+        // wake the lowpass task to process samples
         if (lowpass_td_ptr != NULL) {
-			_task_ready(lowpass_td_ptr);
-	    }
-
-        //apply_filter(lp);
-        //apply_filter(hp);
-        //apply_filter(bp);
+			      _task_ready(lowpass_td_ptr);
+	      }
     }
 }
 
-void apply_filter(filter_type type) {
-    int i, j, sum;
-
-    sum = 0;
+int apply_filter(filter_type_t filter_type) {
+    int i   = 0;
+    int j   = sample_start; 
+    int sum = 0;
     
-    j = sample_start;
     for (i = 0; i < MAX_FILTER_LEN; i++){
         
-        switch(type) {
-            case lp:
+        switch(filter_type) {
+            case lowpass:
                 sum += samples[j] * lowpass_hw[i];
                 break;
-            case hp:
+            case highpass:
                 sum += samples[j] * highpass_hw[i];
                 break;
-            case bp:
+            case bandpass:
                 sum += samples[j] * bandpass_hw[i];
                 break;
             default:
@@ -368,8 +227,18 @@ void apply_filter(filter_type type) {
         }
         j = (j + 1) % MAX_FILTER_LEN;
     }
+
     sum = (sum > 4095) ? (4095) : (sum);
+
+    return sum;
+}
+
+void output_signal (int sum, channel_sel_t channel, filter_type_t filter_type){
+
+  // all tasks fight for output, only enabled type can output
+  if (enabled_filter == filter_type){
+    // output the sum to the DAC
     MCF_QSPI_QAR = 0x0000;
     MCF_QSPI_QDR = ((int)sum | 0x3000);
-
+  }
 }

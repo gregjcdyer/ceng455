@@ -1,7 +1,7 @@
 #ifndef INIT_H
 #define INIT_H
 
-//void init_adc();
+void init_adc();
 void init_qspi();
 void init_pins();
 //void init_gpio();

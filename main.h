@@ -10,23 +10,34 @@ typedef enum {
    term_in,
    term_out,
    command
-} buf_type;
+} buf_type_t;
 
 typedef enum {
-    lp,
-    hp,
-    bp
-} filter_type;
+    lowpass,
+    highpass,
+    bandpass
+} filter_type_t;
 
-void adc_init();
+typedef enum {
+   channel_a,
+   channel_b
+} channel_sel_t;
+
+void main_task(uint_32);
+void lowpass_task(uint_32);
+void highpass_task(uint_32);
+void bandpass_task(uint_32);
+void isr_task(uint_32);
+
 void adcISR();
 void setupISR();
 
-void apply_filter(filter_type type);
+int apply_filter(filter_type type);
 
 void add_sample(int sample);
 void set_lowpass_hw(int_32 sample_freq, int_32 cutoff_freq);
 void set_lowpass_hw_slow(int cutoff_freq, int sample_freq);
+void output_signal(int, channel_sel_t, filter_type_t);
 
 typedef struct   td_struct {
    struct td_struct            _PTR_ TD_NEXT;

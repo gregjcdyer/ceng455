@@ -1,36 +1,14 @@
 #include "MCF52259.h"
 #include "init.h"
 
-/*void init_adc() {
-    // ------
-    MCF_ADC_POWER &= ~(MCF_ADC_POWER_APD | MCF_ADC_POWER_PD2 | MCF_ADC_POWER_PD0);
-    MCF_ADC_POWER |= MCF_ADC_POWER_PD1;
-    // ------
-    //MCF_ADC_POWER = MCF_ADC_POWER_PD1;
-
-    while(MCF_ADC_POWER & (MCF_ADC_POWER_PSTS0 | MCF_ADC_POWER_PSTS2));
-
-    //MCF_ADC_CTRL1 |= MCF_ADC_CTRL1_STOP0;
-
-    MCF_ADC_CAL = MCF_ADC_CAL_SEL_VREFH | MCF_ADC_CAL_SEL_VREFL;
-    
-    // ------
-    MCF_ADC_CTRL1 = MCF_ADC_CTRL1_STOP0 |
-                    MCF_ADC_CTRL1_EOSIE0 |
-                    MCF_ADC_CTRL1_SMODE(0x2);
-    // ------
-
-    MCF_ADC_ADZCC = 0;
-    MCF_ADC_ADLST1 = MCF_ADC_ADLST1_SAMPLE0(0x0);
-    MCF_ADC_ADSDIS = MCF_ADC_ADSDIS_DS1;
-    MCF_ADC_ADLLMT0 = 0;
-    MCF_ADC_ADHLMT0 = MCF_ADC_ADHLMT_HLMT(0xFFF);
-    MCF_ADC_ADOFS0 = 0;
-    MCF_ADC_CTRL1 = MCF_ADC_CTRL1_START0 |
-                    MCF_ADC_CTRL1_EOSIE0 |
-                    MCF_ADC_CTRL1_SMODE(0x2);
-    MCF_ADC_CTRL2 = MCF_ADC_CTRL2_DIV(0x8);
-}*/
+void init_adc(void) {
+    reg_ptr -> ADC.POWER &= ~(MCF_ADC_POWER_APD | MCF_ADC_POWER_PD0);
+    reg_ptr -> ADC.POWER |= MCF_ADC_POWER_PD1;
+    while(MCF_ADC_POWER & MCF_ADC_POWER_PSTS0);
+    reg_ptr -> ADC.CTRL2 = 0x0008;
+    reg_ptr -> ADC.ADSDIS = 0x00FE;
+    reg_ptr -> ADC.CTRL1 = 0x2802;
+}
 
 void init_qspi() {
     int i;
