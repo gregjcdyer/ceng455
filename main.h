@@ -32,7 +32,7 @@ void isr_task(uint_32);
 void adcISR();
 void setupISR();
 
-int apply_filter(filter_type type);
+int apply_filter(filter_type_t type);
 
 void add_sample(int sample);
 void set_lowpass_hw(int_32 sample_freq, int_32 cutoff_freq);

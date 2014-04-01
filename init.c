@@ -1,14 +1,14 @@
 #include "MCF52259.h"
 #include "init.h"
 
-void init_adc(void) {
+/*void init_adc(void) {
     reg_ptr -> ADC.POWER &= ~(MCF_ADC_POWER_APD | MCF_ADC_POWER_PD0);
     reg_ptr -> ADC.POWER |= MCF_ADC_POWER_PD1;
     while(MCF_ADC_POWER & MCF_ADC_POWER_PSTS0);
     reg_ptr -> ADC.CTRL2 = 0x0008;
     reg_ptr -> ADC.ADSDIS = 0x00FE;
     reg_ptr -> ADC.CTRL1 = 0x2802;
-}
+}*/
 
 void init_qspi() {
     int i;

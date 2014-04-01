@@ -87,9 +87,17 @@ TASK_TEMPLATE_STRUCT  MQX_template_list[] =
     {0,          0,          0,   0, 0,       0,                   0, 0}
 };
 
+void init_adc(void) {
+    reg_ptr -> ADC.POWER &= ~(MCF_ADC_POWER_APD | MCF_ADC_POWER_PD0);
+    reg_ptr -> ADC.POWER |= MCF_ADC_POWER_PD1;
+    while(MCF_ADC_POWER & MCF_ADC_POWER_PSTS0);
+    reg_ptr -> ADC.CTRL2 = 0x0008;
+    reg_ptr -> ADC.ADSDIS = 0x00FE;
+    reg_ptr -> ADC.CTRL1 = 0x2802;
+}
+
 // Adds an ADC sample to the circular buffers
 void add_sample(int sample) {
-
     sample_start = (sample_start + 1) % MAX_FILTER_LEN;
     samples[sample_end] = sample;
     sample_end = (sample_end + 1) % MAX_FILTER_LEN;
@@ -189,7 +197,7 @@ void isr_task(uint_32 initial_data) {
         _time_add_usec_to_ticks(&ticks, 10000);
         _time_delay_until(&ticks);
         
-        // wait for the ADC to finish sampling
+        // wait for the ADC to have a sample ready
         while(!((reg_ptr -> ADC.ADSTAT) & 0x0001));
         
         // only for debugging purposes. 
@@ -200,8 +208,8 @@ void isr_task(uint_32 initial_data) {
 
         // wake the lowpass task to process samples
         if (lowpass_td_ptr != NULL) {
-			      _task_ready(lowpass_td_ptr);
-	      }
+	        _task_ready(lowpass_td_ptr);
+	    }
     }
 }
 
