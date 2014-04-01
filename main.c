@@ -82,46 +82,57 @@ fixed point precision: 16 bits
 
 */
 
-#define FILTER_TAP_NUM 33
+/*
 
-static int lowpass_hw[FILTER_TAP_NUM] = {
-  -344,
-  -1430,
-  -2701,
-  -2720,
-  -695,
-  1649,
-  1571,
-  -979,
-  -2362,
-  33,
-  3219,
-  1708,
-  -3987,
-  -5329,
-  4523,
-  20292,
-  28052,
-  20292,
-  4523,
-  -5329,
-  -3987,
-  1708,
-  3219,
-  33,
-  -2362,
-  -979,
-  1571,
-  1649,
-  -695,
-  -2720,
-  -2701,
-  -1430,
-  -344
+FIR filter designed with
+http://t-filter.appspot.com
+
+sampling frequency: 2000 Hz
+
+fixed point precision: 16 bits
+
+* 0 Hz - 400 Hz
+  gain = 1
+  desired ripple = 5 dB
+  actual ripple = n/a
+
+* 500 Hz - 1000 Hz
+  gain = 0
+  desired attenuation = -35 dB
+  actual attenuation = n/a
+
+*/
+
+#define FILTER_TAP_NUM 19
+
+/*static int lowpass_hw[FILTER_TAP_NUM] = {
+  -1617,
+  -1182,
+  2153,
+  5648,
+  3908,
+  -2697,
+  -5168,
+  4330,
+  20679,
+  28879,
+  20679,
+  4330,
+  -5168,
+  -2697,
+  3908,
+  5648,
+  2153,
+  -1182,
+  -1617
 };
 
+*/
 
-//float lowpass_hw[MAX_FILTER_LEN] = {0.0000,-0.0037,-0.0113,-0.0163,0.000,0.0535,0.1371,0.2163,0.2489,0.2163,0.1371,0.0535,0.0000,-0.0163,-0.0113,-0.0037,0.0000};
+float lowpass_hw[MAX_FILTER_LEN] = {
+0.0003, 0.0009, 0.0013, 0.0014, 0.0007, -0.0009, -0.0029, -0.0046, -0.0047, -0.0022, 0.0028, 0.0089, 0.0133, 0.0130, 0.0060, -0.0072, -0.0227, -0.0340, -0.0336, -0.0159, 0.0202, 0.0700, 0.1240, 0.1698, 0.1960, 0.1960, 0.1698, 0.1240, 0.0700, 0.0202, -0.0159, -0.0336, -0.0340, -0.0227, -0.0072, 0.0060, 0.0130, 0.0133, 0.0089, 0.0028, -0.0022, -0.0047, -0.0046, -0.0029, -0.0009, 0.0007, 0.0014, 0.0013, 0.0009, 0.0003
+};
+
 float highpass_hw[MAX_FILTER_LEN] = {-0.0000,0.0037,0.0114,0.0164,-0.0000,-0.0538,-0.1378,-0.2174,0.7507,-0.2174,-0.1378,-0.0538,-0.0000,0.0164,0.0114,0.0037,-0.0000};
 float bandpass_hw[MAX_FILTER_LEN] = {0.0000,0.0169,0.0384,0.0149,-0.0849,-0.1636,-0.0797,0.1316,0.2470,0.1316,-0.0797,-0.1636,-0.0849,0.0149,0.0384,0.0169,0.0000};
 
@@ -155,7 +166,6 @@ void adc_init() {
 }
 
 void adcISR() {
-
     _int_disable();
 
     add_sample((uint_32)((reg_ptr -> ADC.ADRSLT[0]) >> 3));
@@ -257,6 +267,12 @@ void set_lowpass_hw_slow(int cutoff_freq, int sample_freq) {
 
 extern void main_task(uint_32 initial_data) {
 
+    lowpass_tid = _task_create(0, LOWPASS_TASK, 0);
+    if (lowpass_tid == MQX_NULL_TASK_ID){
+        printf("Unable to create lowpass task!\n");
+        _task_block();
+    }
+
     adc_init();
     init_pins();
     init_qspi();
@@ -267,23 +283,21 @@ extern void main_task(uint_32 initial_data) {
 }
 
 extern void lowpass_task(uint_32 initial_data) {
-    int i;
-    double sum;
-    
-    float y[MAX_FILTER_LEN] = {0.0,};
+    int i, j, sum;
 
     while(1) {
-
-        sum = 0.0;
-        
-        i = sample_start;
-        for (i = MAX_FILTER_LEN; i > 0; i--){
-            sum += samples[i-1] * lowpass_hw[i-1];
+        sum = 0;        
+        j = sample_start;
+        for (i = 0; i < MAX_FILTER_LEN; i++){
+            sum += samples[j] * lowpass_hw[i];
+            j = (j + 1) % MAX_FILTER_LEN;
         }
 
+        sum = (sum > 4095) ? (4095) : ((int)sum);
         MCF_QSPI_QAR = 0x0000;
         MCF_QSPI_QDR = ((int)sum | 0x3000);
-
+        
+        _task_block();
     }
 }
 
@@ -300,12 +314,17 @@ extern void bandpass_task(uint_32 initial_data) {
 }
 
 extern void isr_task(uint_32 initial_data) {
+    TD_STRUCT_PTR lowpass_td_ptr;
     MQX_TICK_STRUCT ticks;
     uint_32 sample_read = 0;
     
+    lowpass_td_ptr = _task_get_td(lowpass_tid);
+
     while(1) {
         _time_get_ticks(&ticks);
-        _time_add_usec_to_ticks(&ticks, 1000);  //200Hz sample frequency
+        
+        // 100Hz sample frequency
+        _time_add_usec_to_ticks(&ticks, 10000);
         _time_delay_until(&ticks);
         
         // wait for the ADC to finish sampling
@@ -316,23 +335,24 @@ extern void isr_task(uint_32 initial_data) {
 
         add_sample(sample_read);
 
-        apply_filter(lp);
+        if (lowpass_td_ptr != NULL) {
+			_task_ready(lowpass_td_ptr);
+	    }
+
+        //apply_filter(lp);
         //apply_filter(hp);
         //apply_filter(bp);
     }
 }
 
 void apply_filter(filter_type type) {
-    int i=0, j=0;
-    int sum;
+    int i, j, sum;
 
     sum = 0;
     
-    i = sample_start;
-    j = 0;
-
+    j = sample_start;
     for (i = 0; i < MAX_FILTER_LEN; i++){
-        j = (i + sample_start) % MAX_FILTER_LEN;
+        
         switch(type) {
             case lp:
                 sum += samples[j] * lowpass_hw[i];
@@ -346,6 +366,7 @@ void apply_filter(filter_type type) {
             default:
                 break;
         }
+        j = (j + 1) % MAX_FILTER_LEN;
     }
     sum = (sum > 4095) ? (4095) : (sum);
     MCF_QSPI_QAR = 0x0000;
