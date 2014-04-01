@@ -88,11 +88,11 @@ void init_pins() {
                     MCF_ADC_CTRL1_SMODE(0x2);   // set mode to loop sequential
 }*/
 
-/*void init_pit0(void) {
+void init_pit0(void) {
     MCF_PIT0_PCSR = 0x0;
     MCF_PIT0_PCSR = MCF_PIT_PCSR_OVW | // set overwrite bit so first PMR update is immediate
     MCF_PIT_PCSR_PRE(0x8) | // set timer frequency
     MCF_PIT_PCSR_PIE |	 // enable overflow interrupt
     MCF_PIT_PCSR_EN;	 // enable timer
     MCF_PIT0_PMR = 0xFFFF;	 // Count down from max value
-}*/
+}

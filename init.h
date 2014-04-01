@@ -5,6 +5,6 @@
 void init_qspi();
 void init_pins();
 //void init_gpio();
-//void init_pit0();
+void init_pit0();
 
 #endif INIT_H

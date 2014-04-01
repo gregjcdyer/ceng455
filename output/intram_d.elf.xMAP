@@ -8054,13 +8054,13 @@
       5](_@23,object) found in local m52259demo_d.a mqx_init.o     
       5](_MQX_template_list,object) found in global main.c 
        6](.dwarf._MQX_template_list,object) found in local main.c 
-        7](.dwarf_type.810,object) found in local main.c 
+        7](.dwarf_type.462,object) found in local main.c 
          8](.dwarf_type.task_template_struct,object) found in local main.c 
           9](.dwarf_type.unsigned long,object) found in local main.c 
-          9](.dwarf_type.811,object) found in local main.c 
-           10](.dwarf_type.812,object) found in local main.c 
+          9](.dwarf_type.463,object) found in local main.c 
+           10](.dwarf_type.464,object) found in local main.c 
             11](.dwarf_type.void,object) found in local main.c 
-          9](.dwarf_type.813,object) found in local main.c 
+          9](.dwarf_type.465,object) found in local main.c 
            10](.dwarf_type.char,object) found in local main.c 
        6](.dwarf_aranges._MQX_template_list,object) found in local main.c 
        6](.dwarf_pubnames._MQX_template_list,object) found in local main.c 
@@ -8069,235 +8069,235 @@
         7](.dwarf._isr_task,object) found in local main.c 
          8](.dwarf._lowpass_tid,object) found in local main.c 
          8](.dwarf._reg_ptr,object) found in local main.c 
-          9](.dwarf_type.643,object) found in local main.c 
+          9](.dwarf_type.295,object) found in local main.c 
            10](.dwarf_type.mcf5225_struct,object) found in local main.c 
             11](.dwarf_type.MCF5225_scm_struct,object) found in local main.c 
              12](.dwarf_type.unsigned char,object) found in local main.c 
-             12](.dwarf_type.644,object) found in local main.c 
-            11](.dwarf_type.645,object) found in local main.c 
+             12](.dwarf_type.296,object) found in local main.c 
+            11](.dwarf_type.297,object) found in local main.c 
             11](.dwarf_type.mcf5225_fb_struct,object) found in local main.c 
-            11](.dwarf_type.646,object) found in local main.c 
-            11](.dwarf_type.647,object) found in local main.c 
+            11](.dwarf_type.298,object) found in local main.c 
+            11](.dwarf_type.299,object) found in local main.c 
              12](.dwarf_type.mcf5225_dma_struct,object) found in local main.c 
-            11](.dwarf_type.648,object) found in local main.c 
-            11](.dwarf_type.649,object) found in local main.c 
+            11](.dwarf_type.300,object) found in local main.c 
+            11](.dwarf_type.301,object) found in local main.c 
              12](.dwarf_type.mcf52xx_uart_struct,object) found in local main.c 
-              13](.dwarf_type.650,object) found in local main.c 
-               14](.dwarf_type.651,object) found in local main.c 
-               14](.dwarf_type.652,object) found in local main.c 
-               14](.dwarf_type.653,object) found in local main.c 
-               14](.dwarf_type.654,object) found in local main.c 
-               14](.dwarf_type.655,object) found in local main.c 
-               14](.dwarf_type.656,object) found in local main.c 
-               14](.dwarf_type.657,object) found in local main.c 
-               14](.dwarf_type.658,object) found in local main.c 
-               14](.dwarf_type.659,object) found in local main.c 
-               14](.dwarf_type.660,object) found in local main.c 
-               14](.dwarf_type.661,object) found in local main.c 
-               14](.dwarf_type.662,object) found in local main.c 
-              13](.dwarf_type.663,object) found in local main.c 
-               14](.dwarf_type.664,object) found in local main.c 
-               14](.dwarf_type.665,object) found in local main.c 
-               14](.dwarf_type.666,object) found in local main.c 
-               14](.dwarf_type.667,object) found in local main.c 
-               14](.dwarf_type.668,object) found in local main.c 
-               14](.dwarf_type.669,object) found in local main.c 
-               14](.dwarf_type.670,object) found in local main.c 
-               14](.dwarf_type.671,object) found in local main.c 
-               14](.dwarf_type.672,object) found in local main.c 
-               14](.dwarf_type.673,object) found in local main.c 
-               14](.dwarf_type.674,object) found in local main.c 
-            11](.dwarf_type.675,object) found in local main.c 
+              13](.dwarf_type.302,object) found in local main.c 
+               14](.dwarf_type.303,object) found in local main.c 
+               14](.dwarf_type.304,object) found in local main.c 
+               14](.dwarf_type.305,object) found in local main.c 
+               14](.dwarf_type.306,object) found in local main.c 
+               14](.dwarf_type.307,object) found in local main.c 
+               14](.dwarf_type.308,object) found in local main.c 
+               14](.dwarf_type.309,object) found in local main.c 
+               14](.dwarf_type.310,object) found in local main.c 
+               14](.dwarf_type.311,object) found in local main.c 
+               14](.dwarf_type.312,object) found in local main.c 
+               14](.dwarf_type.313,object) found in local main.c 
+               14](.dwarf_type.314,object) found in local main.c 
+              13](.dwarf_type.315,object) found in local main.c 
+               14](.dwarf_type.316,object) found in local main.c 
+               14](.dwarf_type.317,object) found in local main.c 
+               14](.dwarf_type.318,object) found in local main.c 
+               14](.dwarf_type.319,object) found in local main.c 
+               14](.dwarf_type.320,object) found in local main.c 
+               14](.dwarf_type.321,object) found in local main.c 
+               14](.dwarf_type.322,object) found in local main.c 
+               14](.dwarf_type.323,object) found in local main.c 
+               14](.dwarf_type.324,object) found in local main.c 
+               14](.dwarf_type.325,object) found in local main.c 
+               14](.dwarf_type.326,object) found in local main.c 
+            11](.dwarf_type.327,object) found in local main.c 
             11](.dwarf_type.mcf5225_i2c_struct,object) found in local main.c 
-             12](.dwarf_type.676,object) found in local main.c 
-             12](.dwarf_type.677,object) found in local main.c 
-             12](.dwarf_type.678,object) found in local main.c 
-             12](.dwarf_type.679,object) found in local main.c 
-             12](.dwarf_type.680,object) found in local main.c 
+             12](.dwarf_type.328,object) found in local main.c 
+             12](.dwarf_type.329,object) found in local main.c 
+             12](.dwarf_type.330,object) found in local main.c 
+             12](.dwarf_type.331,object) found in local main.c 
+             12](.dwarf_type.332,object) found in local main.c 
             11](.dwarf_type.mcf52xx_qspi_struct,object) found in local main.c 
              12](.dwarf_type.unsigned short,object) found in local main.c 
-             12](.dwarf_type.681,object) found in local main.c 
-            11](.dwarf_type.682,object) found in local main.c 
-            11](.dwarf_type.683,object) found in local main.c 
+             12](.dwarf_type.333,object) found in local main.c 
+            11](.dwarf_type.334,object) found in local main.c 
+            11](.dwarf_type.335,object) found in local main.c 
              12](.dwarf_type.mcf5225_dma_timer_struct,object) found in local main.c 
-              13](.dwarf_type.684,object) found in local main.c 
-            11](.dwarf_type.685,object) found in local main.c 
+              13](.dwarf_type.336,object) found in local main.c 
+            11](.dwarf_type.337,object) found in local main.c 
             11](.dwarf_type.mcf52xx_ictrl0_struct,object) found in local main.c 
              12](.dwarf_type.mcf52xx_int_ctrl_struct,object) found in local main.c 
-             12](.dwarf_type.686,object) found in local main.c 
-             12](.dwarf_type.687,object) found in local main.c 
-             12](.dwarf_type.688,object) found in local main.c 
+             12](.dwarf_type.338,object) found in local main.c 
+             12](.dwarf_type.339,object) found in local main.c 
+             12](.dwarf_type.340,object) found in local main.c 
              12](.dwarf_type.mcf52xx_iack_struct,object) found in local main.c 
-              13](.dwarf_type.689,object) found in local main.c 
-              13](.dwarf_type.690,object) found in local main.c 
-              13](.dwarf_type.691,object) found in local main.c 
-              13](.dwarf_type.692,object) found in local main.c 
-              13](.dwarf_type.693,object) found in local main.c 
-              13](.dwarf_type.694,object) found in local main.c 
-              13](.dwarf_type.695,object) found in local main.c 
-              13](.dwarf_type.696,object) found in local main.c 
+              13](.dwarf_type.341,object) found in local main.c 
+              13](.dwarf_type.342,object) found in local main.c 
+              13](.dwarf_type.343,object) found in local main.c 
+              13](.dwarf_type.344,object) found in local main.c 
+              13](.dwarf_type.345,object) found in local main.c 
+              13](.dwarf_type.346,object) found in local main.c 
+              13](.dwarf_type.347,object) found in local main.c 
+              13](.dwarf_type.348,object) found in local main.c 
             11](.dwarf_type.mcf52xx_ictrl1_struct,object) found in local main.c 
-             12](.dwarf_type.697,object) found in local main.c 
-             12](.dwarf_type.698,object) found in local main.c 
-             12](.dwarf_type.699,object) found in local main.c 
-            11](.dwarf_type.700,object) found in local main.c 
+             12](.dwarf_type.349,object) found in local main.c 
+             12](.dwarf_type.350,object) found in local main.c 
+             12](.dwarf_type.351,object) found in local main.c 
+            11](.dwarf_type.352,object) found in local main.c 
             11](.dwarf_type.mcf52xx_glack_struct,object) found in local main.c 
-             12](.dwarf_type.701,object) found in local main.c 
-             12](.dwarf_type.702,object) found in local main.c 
-             12](.dwarf_type.703,object) found in local main.c 
-             12](.dwarf_type.704,object) found in local main.c 
-             12](.dwarf_type.705,object) found in local main.c 
-             12](.dwarf_type.706,object) found in local main.c 
-             12](.dwarf_type.707,object) found in local main.c 
-             12](.dwarf_type.708,object) found in local main.c 
-            11](.dwarf_type.709,object) found in local main.c 
+             12](.dwarf_type.353,object) found in local main.c 
+             12](.dwarf_type.354,object) found in local main.c 
+             12](.dwarf_type.355,object) found in local main.c 
+             12](.dwarf_type.356,object) found in local main.c 
+             12](.dwarf_type.357,object) found in local main.c 
+             12](.dwarf_type.358,object) found in local main.c 
+             12](.dwarf_type.359,object) found in local main.c 
+             12](.dwarf_type.360,object) found in local main.c 
+            11](.dwarf_type.361,object) found in local main.c 
             11](.dwarf_type.mcf52xx_fec_struct,object) found in local main.c 
-             12](.dwarf_type.710,object) found in local main.c 
-             12](.dwarf_type.711,object) found in local main.c 
-             12](.dwarf_type.712,object) found in local main.c 
-             12](.dwarf_type.713,object) found in local main.c 
-             12](.dwarf_type.714,object) found in local main.c 
-             12](.dwarf_type.715,object) found in local main.c 
-             12](.dwarf_type.716,object) found in local main.c 
-             12](.dwarf_type.717,object) found in local main.c 
-             12](.dwarf_type.718,object) found in local main.c 
-             12](.dwarf_type.719,object) found in local main.c 
-             12](.dwarf_type.720,object) found in local main.c 
-             12](.dwarf_type.721,object) found in local main.c 
-             12](.dwarf_type.722,object) found in local main.c 
-             12](.dwarf_type.723,object) found in local main.c 
-            11](.dwarf_type.724,object) found in local main.c 
+             12](.dwarf_type.362,object) found in local main.c 
+             12](.dwarf_type.363,object) found in local main.c 
+             12](.dwarf_type.364,object) found in local main.c 
+             12](.dwarf_type.365,object) found in local main.c 
+             12](.dwarf_type.366,object) found in local main.c 
+             12](.dwarf_type.367,object) found in local main.c 
+             12](.dwarf_type.368,object) found in local main.c 
+             12](.dwarf_type.369,object) found in local main.c 
+             12](.dwarf_type.370,object) found in local main.c 
+             12](.dwarf_type.371,object) found in local main.c 
+             12](.dwarf_type.372,object) found in local main.c 
+             12](.dwarf_type.373,object) found in local main.c 
+             12](.dwarf_type.374,object) found in local main.c 
+             12](.dwarf_type.375,object) found in local main.c 
+            11](.dwarf_type.376,object) found in local main.c 
             11](.dwarf_type.mcf5225_gpio_struct,object) found in local main.c 
-             12](.dwarf_type.725,object) found in local main.c 
-             12](.dwarf_type.726,object) found in local main.c 
-             12](.dwarf_type.727,object) found in local main.c 
-             12](.dwarf_type.728,object) found in local main.c 
-             12](.dwarf_type.729,object) found in local main.c 
-             12](.dwarf_type.730,object) found in local main.c 
+             12](.dwarf_type.377,object) found in local main.c 
+             12](.dwarf_type.378,object) found in local main.c 
+             12](.dwarf_type.379,object) found in local main.c 
+             12](.dwarf_type.380,object) found in local main.c 
+             12](.dwarf_type.381,object) found in local main.c 
+             12](.dwarf_type.382,object) found in local main.c 
             11](.dwarf_type.mcf5225_ccm_struct,object) found in local main.c 
-             12](.dwarf_type.731,object) found in local main.c 
-             12](.dwarf_type.732,object) found in local main.c 
-             12](.dwarf_type.733,object) found in local main.c 
+             12](.dwarf_type.383,object) found in local main.c 
+             12](.dwarf_type.384,object) found in local main.c 
+             12](.dwarf_type.385,object) found in local main.c 
             11](.dwarf_type.mcf5225_clk_struct,object) found in local main.c 
-             12](.dwarf_type.734,object) found in local main.c 
-             12](.dwarf_type.735,object) found in local main.c 
-            11](.dwarf_type.736,object) found in local main.c 
+             12](.dwarf_type.386,object) found in local main.c 
+             12](.dwarf_type.387,object) found in local main.c 
+            11](.dwarf_type.388,object) found in local main.c 
              12](.dwarf_type.mcf5225_eport_struct,object) found in local main.c 
-              13](.dwarf_type.737,object) found in local main.c 
-            11](.dwarf_type.738,object) found in local main.c 
-            11](.dwarf_type.739,object) found in local main.c 
+              13](.dwarf_type.389,object) found in local main.c 
+            11](.dwarf_type.390,object) found in local main.c 
+            11](.dwarf_type.391,object) found in local main.c 
              12](.dwarf_type.mcf5225_pit_struct,object) found in local main.c 
-              13](.dwarf_type.740,object) found in local main.c 
+              13](.dwarf_type.392,object) found in local main.c 
             11](.dwarf_type.mcf52XX_fcan_struct,object) found in local main.c 
-            11](.dwarf_type.741,object) found in local main.c 
+            11](.dwarf_type.393,object) found in local main.c 
             11](.dwarf_type.mcf5225_rtc_struct,object) found in local main.c 
-             12](.dwarf_type.742,object) found in local main.c 
-             12](.dwarf_type.743,object) found in local main.c 
+             12](.dwarf_type.394,object) found in local main.c 
+             12](.dwarf_type.395,object) found in local main.c 
             11](.dwarf_type.mcf5225_adc_struct,object) found in local main.c 
-             12](.dwarf_type.744,object) found in local main.c 
-             12](.dwarf_type.745,object) found in local main.c 
-             12](.dwarf_type.746,object) found in local main.c 
-             12](.dwarf_type.747,object) found in local main.c 
-             12](.dwarf_type.748,object) found in local main.c 
+             12](.dwarf_type.396,object) found in local main.c 
+             12](.dwarf_type.397,object) found in local main.c 
+             12](.dwarf_type.398,object) found in local main.c 
+             12](.dwarf_type.399,object) found in local main.c 
+             12](.dwarf_type.400,object) found in local main.c 
             11](.dwarf_type.mcf5225_gpt_struct,object) found in local main.c 
-             12](.dwarf_type.749,object) found in local main.c 
+             12](.dwarf_type.401,object) found in local main.c 
             11](.dwarf_type.mcf5225_pwm_struct,object) found in local main.c 
-             12](.dwarf_type.750,object) found in local main.c 
-             12](.dwarf_type.751,object) found in local main.c 
-             12](.dwarf_type.752,object) found in local main.c 
-             12](.dwarf_type.753,object) found in local main.c 
-             12](.dwarf_type.754,object) found in local main.c 
-             12](.dwarf_type.755,object) found in local main.c 
+             12](.dwarf_type.402,object) found in local main.c 
+             12](.dwarf_type.403,object) found in local main.c 
+             12](.dwarf_type.404,object) found in local main.c 
+             12](.dwarf_type.405,object) found in local main.c 
+             12](.dwarf_type.406,object) found in local main.c 
+             12](.dwarf_type.407,object) found in local main.c 
             11](.dwarf_type.mcf522x_usbotg_struct,object) found in local main.c 
-             12](.dwarf_type.756,object) found in local main.c 
-             12](.dwarf_type.757,object) found in local main.c 
-             12](.dwarf_type.758,object) found in local main.c 
-             12](.dwarf_type.759,object) found in local main.c 
-             12](.dwarf_type.760,object) found in local main.c 
-             12](.dwarf_type.761,object) found in local main.c 
-             12](.dwarf_type.762,object) found in local main.c 
-             12](.dwarf_type.763,object) found in local main.c 
-             12](.dwarf_type.764,object) found in local main.c 
-             12](.dwarf_type.765,object) found in local main.c 
-             12](.dwarf_type.766,object) found in local main.c 
-             12](.dwarf_type.767,object) found in local main.c 
-             12](.dwarf_type.768,object) found in local main.c 
-             12](.dwarf_type.769,object) found in local main.c 
-             12](.dwarf_type.770,object) found in local main.c 
-             12](.dwarf_type.771,object) found in local main.c 
-             12](.dwarf_type.772,object) found in local main.c 
-             12](.dwarf_type.773,object) found in local main.c 
-             12](.dwarf_type.774,object) found in local main.c 
-             12](.dwarf_type.775,object) found in local main.c 
-             12](.dwarf_type.776,object) found in local main.c 
-             12](.dwarf_type.777,object) found in local main.c 
-             12](.dwarf_type.778,object) found in local main.c 
-             12](.dwarf_type.779,object) found in local main.c 
-             12](.dwarf_type.780,object) found in local main.c 
-             12](.dwarf_type.781,object) found in local main.c 
-             12](.dwarf_type.782,object) found in local main.c 
-             12](.dwarf_type.783,object) found in local main.c 
-             12](.dwarf_type.784,object) found in local main.c 
-             12](.dwarf_type.785,object) found in local main.c 
-             12](.dwarf_type.786,object) found in local main.c 
-             12](.dwarf_type.787,object) found in local main.c 
-             12](.dwarf_type.788,object) found in local main.c 
-             12](.dwarf_type.789,object) found in local main.c 
-             12](.dwarf_type.790,object) found in local main.c 
-             12](.dwarf_type.791,object) found in local main.c 
-             12](.dwarf_type.792,object) found in local main.c 
-             12](.dwarf_type.793,object) found in local main.c 
-             12](.dwarf_type.794,object) found in local main.c 
-             12](.dwarf_type.795,object) found in local main.c 
-             12](.dwarf_type.796,object) found in local main.c 
-             12](.dwarf_type.797,object) found in local main.c 
+             12](.dwarf_type.408,object) found in local main.c 
+             12](.dwarf_type.409,object) found in local main.c 
+             12](.dwarf_type.410,object) found in local main.c 
+             12](.dwarf_type.411,object) found in local main.c 
+             12](.dwarf_type.412,object) found in local main.c 
+             12](.dwarf_type.413,object) found in local main.c 
+             12](.dwarf_type.414,object) found in local main.c 
+             12](.dwarf_type.415,object) found in local main.c 
+             12](.dwarf_type.416,object) found in local main.c 
+             12](.dwarf_type.417,object) found in local main.c 
+             12](.dwarf_type.418,object) found in local main.c 
+             12](.dwarf_type.419,object) found in local main.c 
+             12](.dwarf_type.420,object) found in local main.c 
+             12](.dwarf_type.421,object) found in local main.c 
+             12](.dwarf_type.422,object) found in local main.c 
+             12](.dwarf_type.423,object) found in local main.c 
+             12](.dwarf_type.424,object) found in local main.c 
+             12](.dwarf_type.425,object) found in local main.c 
+             12](.dwarf_type.426,object) found in local main.c 
+             12](.dwarf_type.427,object) found in local main.c 
+             12](.dwarf_type.428,object) found in local main.c 
+             12](.dwarf_type.429,object) found in local main.c 
+             12](.dwarf_type.430,object) found in local main.c 
+             12](.dwarf_type.431,object) found in local main.c 
+             12](.dwarf_type.432,object) found in local main.c 
+             12](.dwarf_type.433,object) found in local main.c 
+             12](.dwarf_type.434,object) found in local main.c 
+             12](.dwarf_type.435,object) found in local main.c 
+             12](.dwarf_type.436,object) found in local main.c 
+             12](.dwarf_type.437,object) found in local main.c 
+             12](.dwarf_type.438,object) found in local main.c 
+             12](.dwarf_type.439,object) found in local main.c 
+             12](.dwarf_type.440,object) found in local main.c 
+             12](.dwarf_type.441,object) found in local main.c 
+             12](.dwarf_type.442,object) found in local main.c 
+             12](.dwarf_type.443,object) found in local main.c 
+             12](.dwarf_type.444,object) found in local main.c 
+             12](.dwarf_type.445,object) found in local main.c 
+             12](.dwarf_type.446,object) found in local main.c 
+             12](.dwarf_type.447,object) found in local main.c 
+             12](.dwarf_type.448,object) found in local main.c 
+             12](.dwarf_type.449,object) found in local main.c 
             11](.dwarf_type.mcf5225_cfm_struct,object) found in local main.c 
-             12](.dwarf_type.798,object) found in local main.c 
-             12](.dwarf_type.799,object) found in local main.c 
-             12](.dwarf_type.800,object) found in local main.c 
-             12](.dwarf_type.801,object) found in local main.c 
-             12](.dwarf_type.802,object) found in local main.c 
-             12](.dwarf_type.803,object) found in local main.c 
-            11](.dwarf_type.804,object) found in local main.c 
+             12](.dwarf_type.450,object) found in local main.c 
+             12](.dwarf_type.451,object) found in local main.c 
+             12](.dwarf_type.452,object) found in local main.c 
+             12](.dwarf_type.453,object) found in local main.c 
+             12](.dwarf_type.454,object) found in local main.c 
+             12](.dwarf_type.455,object) found in local main.c 
+            11](.dwarf_type.456,object) found in local main.c 
             11](.dwarf_type.mcf5225_rng_struct,object) found in local main.c 
-             12](.dwarf_type.805,object) found in local main.c 
-         8](.dwarf_type.817,object) found in local main.c 
+             12](.dwarf_type.457,object) found in local main.c 
+         8](.dwarf_type.466,object) found in local main.c 
           9](.dwarf_type.td_struct,object) found in local main.c 
-           10](.dwarf_type.818,object) found in local main.c 
-           10](.dwarf_type.819,object) found in local main.c 
-           10](.dwarf_type.820,object) found in local main.c 
-           10](.dwarf_type.821,object) found in local main.c 
-           10](.dwarf_type.822,object) found in local main.c 
-           10](.dwarf_type.823,object) found in local main.c 
+           10](.dwarf_type.467,object) found in local main.c 
+           10](.dwarf_type.468,object) found in local main.c 
+           10](.dwarf_type.469,object) found in local main.c 
+           10](.dwarf_type.470,object) found in local main.c 
+           10](.dwarf_type.471,object) found in local main.c 
+           10](.dwarf_type.472,object) found in local main.c 
             11](.dwarf_type.ready_q_struct,object) found in local main.c 
-           10](.dwarf_type.824,object) found in local main.c 
-           10](.dwarf_type.825,object) found in local main.c 
-           10](.dwarf_type.826,object) found in local main.c 
-           10](.dwarf_type.827,object) found in local main.c 
-           10](.dwarf_type.828,object) found in local main.c 
-           10](.dwarf_type.829,object) found in local main.c 
-           10](.dwarf_type.830,object) found in local main.c 
-           10](.dwarf_type.831,object) found in local main.c 
-           10](.dwarf_type.832,object) found in local main.c 
+           10](.dwarf_type.473,object) found in local main.c 
+           10](.dwarf_type.474,object) found in local main.c 
+           10](.dwarf_type.475,object) found in local main.c 
+           10](.dwarf_type.476,object) found in local main.c 
+           10](.dwarf_type.477,object) found in local main.c 
+           10](.dwarf_type.478,object) found in local main.c 
+           10](.dwarf_type.479,object) found in local main.c 
+           10](.dwarf_type.480,object) found in local main.c 
+           10](.dwarf_type.481,object) found in local main.c 
            10](.dwarf_type.mqx_tick_struct,object) found in local main.c 
-            11](.dwarf_type.833,object) found in local main.c 
-           10](.dwarf_type.834,object) found in local main.c 
-           10](.dwarf_type.835,object) found in local main.c 
-           10](.dwarf_type.836,object) found in local main.c 
-           10](.dwarf_type.837,object) found in local main.c 
-           10](.dwarf_type.838,object) found in local main.c 
-           10](.dwarf_type.839,object) found in local main.c 
-            11](.dwarf_type.840,object) found in local main.c 
-           10](.dwarf_type.841,object) found in local main.c 
-            11](.dwarf_type.842,object) found in local main.c 
-             12](.dwarf_type.843,object) found in local main.c 
+            11](.dwarf_type.482,object) found in local main.c 
+           10](.dwarf_type.483,object) found in local main.c 
+           10](.dwarf_type.484,object) found in local main.c 
+           10](.dwarf_type.485,object) found in local main.c 
+           10](.dwarf_type.486,object) found in local main.c 
+           10](.dwarf_type.487,object) found in local main.c 
+           10](.dwarf_type.488,object) found in local main.c 
+            11](.dwarf_type.489,object) found in local main.c 
+           10](.dwarf_type.490,object) found in local main.c 
+            11](.dwarf_type.491,object) found in local main.c 
+             12](.dwarf_type.492,object) found in local main.c 
            10](.dwarf_type.queue_element_struct,object) found in local main.c 
-            11](.dwarf_type.844,object) found in local main.c 
-            11](.dwarf_type.845,object) found in local main.c 
-           10](.dwarf_type.846,object) found in local main.c 
-           10](.dwarf_type.847,object) found in local main.c 
-           10](.dwarf_type.848,object) found in local main.c 
-           10](.dwarf_type.849,object) found in local main.c 
+            11](.dwarf_type.493,object) found in local main.c 
+            11](.dwarf_type.494,object) found in local main.c 
+           10](.dwarf_type.495,object) found in local main.c 
+           10](.dwarf_type.496,object) found in local main.c 
+           10](.dwarf_type.497,object) found in local main.c 
+           10](.dwarf_type.498,object) found in local main.c 
         7](.dwarf_line._isr_task,object) found in local main.c 
         7](.dwarf_aranges._isr_task,object) found in local main.c 
         7](.dwarf_pubnames._isr_task,object) found in local main.c 
@@ -8470,7 +8470,7 @@
            10](.dwarf_type.int,object) found in local main.c 
           9](.dwarf._sample_end,object) found in local main.c 
           9](.dwarf._samples,object) found in local main.c 
-           10](.dwarf_type.809,object) found in local main.c 
+           10](.dwarf_type.461,object) found in local main.c 
          8](.dwarf_line._add_sample,object) found in local main.c 
          8](.dwarf_aranges._add_sample,object) found in local main.c 
          8](.dwarf_pubnames._add_sample,object) found in local main.c 
@@ -9538,66 +9538,6 @@
          8](.dwarf_line.__task_get_td,object) found in local mqx_d.a td_get.o       
          8](.dwarf_aranges.__task_get_td,object) found in local mqx_d.a td_get.o       
          8](.dwarf_pubnames.__task_get_td,object) found in local mqx_d.a td_get.o       
-        7](_lowpass_tid,object) found in global main.c 
-         8](.dwarf_aranges._lowpass_tid,object) found in local main.c 
-         8](.dwarf_pubnames._lowpass_tid,object) found in local main.c 
-       6](_@37,object) found in local main.c 
-       6](_bandpass_task,func) found in global main.c 
-        7](.dwarf._bandpass_task,object) found in local main.c 
-        7](.dwarf_line._bandpass_task,object) found in local main.c 
-        7](.dwarf_aranges._bandpass_task,object) found in local main.c 
-        7](.dwarf_pubnames._bandpass_task,object) found in local main.c 
-       6](_@36,object) found in local main.c 
-       6](_highpass_task,func) found in global main.c 
-        7](.dwarf._highpass_task,object) found in local main.c 
-        7](.dwarf_line._highpass_task,object) found in local main.c 
-        7](.dwarf_aranges._highpass_task,object) found in local main.c 
-        7](.dwarf_pubnames._highpass_task,object) found in local main.c 
-       6](_@35,object) found in local main.c 
-       6](_lowpass_task,func) found in global main.c 
-        7](.dwarf._lowpass_task,object) found in local main.c 
-         8](.dwarf._lowpass_hw,object) found in local main.c 
-          9](.dwarf_type.806,object) found in local main.c 
-           10](.dwarf_type.float,object) found in local main.c 
-        7](.dwarf_line._lowpass_task,object) found in local main.c 
-        7](.dwarf_aranges._lowpass_task,object) found in local main.c 
-        7](.dwarf_pubnames._lowpass_task,object) found in local main.c 
-        7](__f_ftoi,notype) found in weak fp_coldfire.o ftoi.o         
-         8](__fpscr,object) found in global C_4i_CF_StdABI_MSL.a fenv_cf.o      
-          9](.dwarf.__fpscr,object) found in local C_4i_CF_StdABI_MSL.a fenv_cf.o      
-           10](.dwarf_type.unsigned long,object) found in local C_4i_CF_StdABI_MSL.a fenv_cf.o      
-          9](.dwarf_aranges.__fpscr,object) found in local C_4i_CF_StdABI_MSL.a fenv_cf.o      
-          9](.dwarf_pubnames.__fpscr,object) found in local C_4i_CF_StdABI_MSL.a fenv_cf.o      
-        7](__f_add,notype) found in weak fp_coldfire.o fadd.o         
-         8](__fp_f_directed_rounding,notype) found in weak fp_coldfire.o fterminals.o   
-        7](__f_mul,notype) found in weak fp_coldfire.o fmul.o         
-        7](_lowpass_hw,object) found in global main.c 
-         8](.dwarf_aranges._lowpass_hw,object) found in local main.c 
-         8](.dwarf_pubnames._lowpass_hw,object) found in local main.c 
-        7](__f_itof,notype) found in weak fp_coldfire.o int_to_f.o     
-       6](_@34,object) found in local main.c 
-       6](_main_task,func) found in global main.c 
-        7](.dwarf._main_task,object) found in local main.c 
-        7](.dwarf_line._main_task,object) found in local main.c 
-        7](.dwarf_aranges._main_task,object) found in local main.c 
-        7](.dwarf_pubnames._main_task,object) found in local main.c 
-        7](_init_qspi,func) found in global init.c 
-         8](.dwarf._init_qspi,object) found in local init.c 
-          9](.dwarf_type.void,object) found in local init.c 
-          9](.dwarf_type.int,object) found in local init.c 
-         8](.dwarf_line._init_qspi,object) found in local init.c 
-         8](.dwarf_aranges._init_qspi,object) found in local init.c 
-         8](.dwarf_pubnames._init_qspi,object) found in local init.c 
-        7](_init_pins,func) found in global init.c 
-         8](.dwarf._init_pins,object) found in local init.c 
-         8](.dwarf_line._init_pins,object) found in local init.c 
-         8](.dwarf_aranges._init_pins,object) found in local init.c 
-         8](.dwarf_pubnames._init_pins,object) found in local init.c 
-        7](_adc_init,func) found in global main.c 
-         8](.dwarf._adc_init,object) found in local main.c 
-         8](.dwarf_line._adc_init,object) found in local main.c 
-         8](.dwarf_aranges._adc_init,object) found in local main.c 
-         8](.dwarf_pubnames._adc_init,object) found in local main.c 
         7](__io_printf,func) found in global mqx_d.a io_pntf.o      
          8](.dwarf.__io_printf,object) found in local mqx_d.a io_pntf.o      
           9](.dwarf_type.long,object) found in local mqx_d.a io_pntf.o      
@@ -9877,7 +9817,10 @@
           9](.dwarf_line.__io_get_handle,object) found in local mqx_d.a io_ghand.o     
           9](.dwarf_aranges.__io_get_handle,object) found in local mqx_d.a io_ghand.o     
           9](.dwarf_pubnames.__io_get_handle,object) found in local mqx_d.a io_ghand.o     
-        7](_@435,object) found in local main.c 
+        7](_@175,object) found in local main.c 
+        7](_lowpass_tid,object) found in global main.c 
+         8](.dwarf_aranges._lowpass_tid,object) found in local main.c 
+         8](.dwarf_pubnames._lowpass_tid,object) found in local main.c 
         7](__task_create,func) found in global mqx_d.a ta_creat.o     
          8](.dwarf.__task_create,object) found in local mqx_d.a ta_creat.o     
           9](.dwarf_type.unsigned long,object) found in local mqx_d.a ta_creat.o     
@@ -10205,6 +10148,82 @@
           9](.dwarf_line.__task_build_internal,object) found in local mqx_d.a ta_build.o     
           9](.dwarf_aranges.__task_build_internal,object) found in local mqx_d.a ta_build.o     
           9](.dwarf_pubnames.__task_build_internal,object) found in local mqx_d.a ta_build.o     
+       6](_@37,object) found in local main.c 
+       6](_bandpass_task,func) found in global main.c 
+        7](.dwarf._bandpass_task,object) found in local main.c 
+        7](.dwarf_line._bandpass_task,object) found in local main.c 
+        7](.dwarf_aranges._bandpass_task,object) found in local main.c 
+        7](.dwarf_pubnames._bandpass_task,object) found in local main.c 
+       6](_@36,object) found in local main.c 
+       6](_highpass_task,func) found in global main.c 
+        7](.dwarf._highpass_task,object) found in local main.c 
+        7](.dwarf_line._highpass_task,object) found in local main.c 
+        7](.dwarf_aranges._highpass_task,object) found in local main.c 
+        7](.dwarf_pubnames._highpass_task,object) found in local main.c 
+       6](_@35,object) found in local main.c 
+       6](_lowpass_task,func) found in global main.c 
+        7](.dwarf._lowpass_task,object) found in local main.c 
+         8](.dwarf._lowpass_hw,object) found in local main.c 
+          9](.dwarf_type.458,object) found in local main.c 
+           10](.dwarf_type.float,object) found in local main.c 
+        7](.dwarf_line._lowpass_task,object) found in local main.c 
+        7](.dwarf_aranges._lowpass_task,object) found in local main.c 
+        7](.dwarf_pubnames._lowpass_task,object) found in local main.c 
+        7](__f_ftoi,notype) found in weak fp_coldfire.o ftoi.o         
+         8](__fpscr,object) found in global C_4i_CF_StdABI_MSL.a fenv_cf.o      
+          9](.dwarf.__fpscr,object) found in local C_4i_CF_StdABI_MSL.a fenv_cf.o      
+           10](.dwarf_type.unsigned long,object) found in local C_4i_CF_StdABI_MSL.a fenv_cf.o      
+          9](.dwarf_aranges.__fpscr,object) found in local C_4i_CF_StdABI_MSL.a fenv_cf.o      
+          9](.dwarf_pubnames.__fpscr,object) found in local C_4i_CF_StdABI_MSL.a fenv_cf.o      
+        7](__f_add,notype) found in weak fp_coldfire.o fadd.o         
+         8](__fp_f_directed_rounding,notype) found in weak fp_coldfire.o fterminals.o   
+        7](__f_mul,notype) found in weak fp_coldfire.o fmul.o         
+        7](_lowpass_hw,object) found in global main.c 
+         8](.dwarf_aranges._lowpass_hw,object) found in local main.c 
+         8](.dwarf_pubnames._lowpass_hw,object) found in local main.c 
+        7](__f_itof,notype) found in weak fp_coldfire.o int_to_f.o     
+       6](_@34,object) found in local main.c 
+       6](_main_task,func) found in global main.c 
+        7](.dwarf._main_task,object) found in local main.c 
+        7](.dwarf_line._main_task,object) found in local main.c 
+        7](.dwarf_aranges._main_task,object) found in local main.c 
+        7](.dwarf_pubnames._main_task,object) found in local main.c 
+        7](_setupISR,func) found in global main.c 
+         8](.dwarf._setupISR,object) found in local main.c 
+          9](.dwarf._uartRegisterMask,object) found in local main.c 
+         8](.dwarf_line._setupISR,object) found in local main.c 
+         8](.dwarf_aranges._setupISR,object) found in local main.c 
+         8](.dwarf_pubnames._setupISR,object) found in local main.c 
+         8](_adcISR,func) found in global main.c 
+          9](.dwarf._adcISR,object) found in local main.c 
+          9](.dwarf_line._adcISR,object) found in local main.c 
+          9](.dwarf_aranges._adcISR,object) found in local main.c 
+          9](.dwarf_pubnames._adcISR,object) found in local main.c 
+         8](_uartRegisterMask,object) found in global main.c 
+          9](.dwarf_aranges._uartRegisterMask,object) found in local main.c 
+          9](.dwarf_pubnames._uartRegisterMask,object) found in local main.c 
+        7](_init_pit0,func) found in global init.c 
+         8](.dwarf._init_pit0,object) found in local init.c 
+          9](.dwarf_type.void,object) found in local init.c 
+         8](.dwarf_line._init_pit0,object) found in local init.c 
+         8](.dwarf_aranges._init_pit0,object) found in local init.c 
+         8](.dwarf_pubnames._init_pit0,object) found in local init.c 
+        7](_init_qspi,func) found in global init.c 
+         8](.dwarf._init_qspi,object) found in local init.c 
+          9](.dwarf_type.int,object) found in local init.c 
+         8](.dwarf_line._init_qspi,object) found in local init.c 
+         8](.dwarf_aranges._init_qspi,object) found in local init.c 
+         8](.dwarf_pubnames._init_qspi,object) found in local init.c 
+        7](_init_pins,func) found in global init.c 
+         8](.dwarf._init_pins,object) found in local init.c 
+         8](.dwarf_line._init_pins,object) found in local init.c 
+         8](.dwarf_aranges._init_pins,object) found in local init.c 
+         8](.dwarf_pubnames._init_pins,object) found in local init.c 
+        7](_adc_init,func) found in global main.c 
+         8](.dwarf._adc_init,object) found in local main.c 
+         8](.dwarf_line._adc_init,object) found in local main.c 
+         8](.dwarf_aranges._adc_init,object) found in local main.c 
+         8](.dwarf_pubnames._adc_init,object) found in local main.c 
     3](___initialize_OS,func) found in global m52259demo_d.a cw.o           
      4](.dwarf.___initialize_OS,object) found in local m52259demo_d.a cw.o           
      4](.dwarf_line.___initialize_OS,object) found in local m52259demo_d.a cw.o           
@@ -11567,180 +11586,183 @@
   20000774 00000000 KERNEL  _int_kernel_isr	(mqx_d.a dispatch.o     )
   20000854 00000000 KERNEL  _int_kernel_isr_return_internal	(mqx_d.a dispatch.o     )
   2000095C 00000098 .text   adc_init	(main.c)
-  200009F4 00000042 .text   add_sample	(main.c)
-  20000A36 0000005C .text   main_task	(main.c)
-  20000A92 000000FA .text   lowpass_task	(main.c)
-  20000B8C 0000000A .text   highpass_task	(main.c)
-  20000B96 0000000A .text   bandpass_task	(main.c)
-  20000BA0 000000A0 .text   isr_task	(main.c)
-  20000C40 0000008C .text   init_qspi	(init.c)
-  20000CCC 00000022 .text   init_pins	(init.c)
-  20000CEE 0000002A .text   __destroy_global_chain	(C_4i_CF_StdABI_Runtime.a cf_staticinitia)
-  20000D18 00000004 .text   _ExitProcess	(C_4i_CF_StdABI_Runtime.a cf_startup.o   )
-  20000D1C 00000064 .text   clear_mem	(C_4i_CF_StdABI_Runtime.a cf_startup.o   )
-  20000D80 00000094 .text   _start	(C_4i_CF_StdABI_Runtime.a cf_startup.o   )
-  20000E14 0000001E .text   __rt_sub64	(C_4i_CF_StdABI_Runtime.a longlongcf.o   )
-  20000E32 00000050 .text   __rt_mul64	(C_4i_CF_StdABI_Runtime.a longlongcf.o   )
-  20000E82 000000EE .text   __rt_divmod64	(C_4i_CF_StdABI_Runtime.a longlongcf.o   )
-  20000F70 00000030 .text   __rt_divu64	(C_4i_CF_StdABI_Runtime.a longlongcf.o   )
-  20000FA0 00000030 .text   __rt_modu64	(C_4i_CF_StdABI_Runtime.a longlongcf.o   )
-  20000FD0 0000002E .text   __rt_shl64	(C_4i_CF_StdABI_Runtime.a longlongcf.o   )
-  20000FFE 00000034 .text   __rt_shru64	(C_4i_CF_StdABI_Runtime.a longlongcf.o   )
-  20001032 00000024 .text   __rt_cmpu64	(C_4i_CF_StdABI_Runtime.a longlongcf.o   )
-  20001056 00000008 .text   simple_block_copy	(C_4i_CF_StdABI_Runtime.a romcopy.o      )
-  2000105E 0000001E .text   __copy_rom_section	(C_4i_CF_StdABI_Runtime.a romcopy.o      )
-  2000107C 0000005A .text   __copy_rom_sections_to_ram	(C_4i_CF_StdABI_Runtime.a romcopy.o      )
-  200010D6 00000032 .text   exit	(C_4i_CF_StdABI_MSL.a abort_exit_cf.o)
-  20001108 00000036 .text   __exit	(C_4i_CF_StdABI_MSL.a abort_exit_cf.o)
-  2000113E 00000048 .text   strncmp	(C_4i_CF_StdABI_MSL.a string.o       )
-  20001188 00000762 .text   .text	(fp_coldfire.o fadd.o         )
-  20001188 00000000 .text   _f_sub	(fp_coldfire.o fadd.o         )
-  200011A4 00000000 .text   _f_add	(fp_coldfire.o fadd.o         )
-  200018EC 00000000 .text   _f_mul	(fp_coldfire.o fmul.o         )
-  200018EC 00000504 .text   .text	(fp_coldfire.o fmul.o         )
-  20001DF0 000000E2 .text   .text	(fp_coldfire.o fterminals.o   )
-  20001DF0 00000000 .text   _fp_f_overflow	(fp_coldfire.o fterminals.o   )
-  20001E50 00000000 .text   _fp_f_underflow	(fp_coldfire.o fterminals.o   )
-  20001E92 00000000 .text   _fp_f_directed_rounding	(fp_coldfire.o fterminals.o   )
-  20001ED4 00000000 .text   _f_ftoi	(fp_coldfire.o ftoi.o         )
-  20001ED4 000000BA .text   .text	(fp_coldfire.o ftoi.o         )
-  20001F90 00000000 .text   _f_utof	(fp_coldfire.o int_to_f.o     )
-  20001F90 00000168 .text   .text	(fp_coldfire.o int_to_f.o     )
-  20002000 00000000 .text   _f_itof	(fp_coldfire.o int_to_f.o     )
-  2000201C 00000000 .text   _f_ulltof	(fp_coldfire.o int_to_f.o     )
-  200020B0 00000000 .text   _f_lltof	(fp_coldfire.o int_to_f.o     )
-  200020F8 00000054 .text   _io_serial_default_init	(m52259demo_d.a io_sinit.o     )
-  2000214C 000000C8 .text   _io_serial_polled_install	(m52259demo_d.a serl_pol.o     )
-  20002214 00000114 .text   _io_serial_polled_open	(m52259demo_d.a serl_pol.o     )
-  20002328 00000084 .text   _io_serial_polled_close	(m52259demo_d.a serl_pol.o     )
-  200023AC 00000390 .text   _io_serial_polled_read	(m52259demo_d.a serl_pol.o     )
-  2000273C 00000220 .text   _io_serial_polled_write	(m52259demo_d.a serl_pol.o     )
-  2000295C 000000E8 .text   _io_serial_polled_ioctl	(m52259demo_d.a serl_pol.o     )
-  20002A44 00000124 .text   _mcf5225_timer_init_freq	(m52259demo_d.a tmcf5225.o     )
-  20002B68 00000084 .text   _mcf5225_get_hwticks	(m52259demo_d.a tmcf5225.o     )
-  20002BEC 00000118 .text   compute_icntl_registers	(m52259demo_d.a cmcf5225.o     )
-  20002D04 000000CC .text   _mcf5225_int_init	(m52259demo_d.a cmcf5225.o     )
-  20002DD0 00000068 .text   _mcf5225_int_unmask	(m52259demo_d.a cmcf5225.o     )
-  20002E38 00000020 .text   _mcf5225_int_mask_all	(m52259demo_d.a cmcf5225.o     )
-  20002E58 000000CC .text   mcf5225_init	(m52259demo_d.a bsp_init.o     )
-  20002F24 0000001C .text   main	(m52259demo_d.a cw2.o          )
-  20002F40 00000018 .text   __initialize_hardware	(m52259demo_d.a cw.o           )
-  20002F58 00000008 .text   __initialize_OS	(m52259demo_d.a cw.o           )
-  20002F60 0000004C .text   __cpp_init	(m52259demo_d.a cw.o           )
-  20002FAC 00000164 .text   _bsp_enable_card	(m52259demo_d.a init_bsp.o     )
-  20003110 00000054 .text   _bsp_timer_isr	(m52259demo_d.a init_bsp.o     )
-  20003164 00000018 .text   _bsp_get_hwticks	(m52259demo_d.a init_bsp.o     )
-  2000317C 00000068 .text   _bsp_setup_watchdog	(m52259demo_d.a init_bsp.o     )
-  200031E4 00000098 .text   _io_gpio_install	(m52259demo_d.a io_gpio.o      )
-  2000327C 00000194 .text   _io_gpio_open	(m52259demo_d.a io_gpio.o      )
-  20003410 00000064 .text   _io_gpio_close	(m52259demo_d.a io_gpio.o      )
-  20003474 0000000C .text   _io_gpio_read	(m52259demo_d.a io_gpio.o      )
-  20003480 0000000C .text   _io_gpio_write	(m52259demo_d.a io_gpio.o      )
-  2000348C 00000930 .text   gpio_cpu_configure	(m52259demo_d.a io_gpio_mcf5225)
-  20003DBC 00000024 .text   gpio_cpu_init	(m52259demo_d.a io_gpio_mcf5225)
-  20003DE0 000002E4 .text   gpio_cpu_open	(m52259demo_d.a io_gpio_mcf5225)
-  200040C4 000008CC .text   gpio_cpu_ioctl	(m52259demo_d.a io_gpio_mcf5225)
-  20004990 00000038 .text   _bsp_get_serial_base_address	(m52259demo_d.a serl_mcf5225.o )
-  200049C8 00000068 .text   _mcf52xx_uart_serial_polled_install	(m52259demo_d.a serl_pol_mcf52x)
-  20004A30 00000110 .text   _mcf52xx_uart_serial_polled_init	(m52259demo_d.a serl_pol_mcf52x)
-  20004B40 00000018 .text   _mcf52xx_uart_serial_polled_deinit	(m52259demo_d.a serl_pol_mcf52x)
-  20004B58 0000002C .text   _mcf52xx_uart_serial_polled_getc	(m52259demo_d.a serl_pol_mcf52x)
-  20004B84 00000030 .text   _mcf52xx_uart_serial_polled_putc	(m52259demo_d.a serl_pol_mcf52x)
-  20004BB4 00000028 .text   _mcf52xx_uart_serial_polled_status	(m52259demo_d.a serl_pol_mcf52x)
-  20004BDC 000002AC .text   _mcf52xx_uart_serial_polled_ioctl	(m52259demo_d.a serl_pol_mcf52x)
-  20004E88 00000084 .text   _bsp_serial_io_init	(m52259demo_d.a gpio_init.o    )
-  20004F0C 0000001E .text   _time_set_timer_vector	(mqx_d.a ti_setv.o      )
-  20004F2A 0000004C .text   _int_disable	(mqx_d.a int_disa.o     )
-  20004F76 00000070 .text   _int_enable	(mqx_d.a int_ena.o      )
-  20004FE6 00000098 .text   _int_install_isr	(mqx_d.a int_iisr.o     )
-  2000507E 00000064 .text   _int_default_isr	(mqx_d.a int_isr.o      )
-  200050E2 000000A6 .text   _lwsem_create	(mqx_d.a lws_crea.o     )
-  20005188 0000002E .text   _mem_set_type	(mqx_d.a mem_util.o     )
-  200051B6 0000006E .text   _mem_transfer_internal	(mqx_d.a mem_xfri.o     )
-  20005224 00000094 .text   _mem_alloc_system_zero	(mqx_d.a mem_zsys.o     )
-  200052B8 0000039E .text   _mqx	(mqx_d.a mqx.o          )
-  20005656 0000001C .text   _mqx_exit	(mqx_d.a mqx.o          )
-  20005672 0000001E .text   _mqx_set_cpu_type	(mqx_d.a mqx_scpu.o     )
-  20005690 000001D8 .text   _mqx_init_kernel_data_internal	(mqx_d.a mqxiinit.o     )
-  20005868 0000010A .text   _task_build_internal	(mqx_d.a ta_build.o     )
-  20005972 000000E0 .text   _task_create	(mqx_d.a ta_creat.o     )
-  20005A52 0000002C .text   _task_exit_function_internal	(mqx_d.a ta_exit.o      )
-  20005A7E 00000310 .text   _task_init_internal	(mqx_d.a ta_init.o      )
-  20005D8E 00000042 .text   _task_fill_stack_internal	(mqx_d.a ta_init.o      )
-  20005DD0 00000070 .text   _task_ready_internal	(mqx_d.a ta_init.o      )
-  20005E40 0000007E .text   _task_ready	(mqx_d.a ta_rdy.o       )
-  20005EBE 000001A4 .text   _task_alloc_td_internal	(mqx_d.a td_alloc.o     )
-  20006062 00000090 .text   _task_get_td	(mqx_d.a td_get.o       )
-  200060F2 0000007A .text   _task_set_error	(mqx_d.a td_serr.o      )
-  2000616C 00000034 .text   _task_set_error_td_internal	(mqx_d.a td_serrt.o     )
-  200061A0 00000324 .text   _time_notify_kernel	(mqx_d.a ti_krnl.o      )
-  200064C4 00000060 .text   _mqx_idle_task	(mqx_d.a idletask.o     )
-  20006524 000000DC .text   _int_init	(mqx_d.a int_init.o     )
-  20006600 00000042 .text   _time_add_usec_to_ticks	(mqx_d.a ti_ausec.o     )
-  20006642 00000162 .text   _time_delay_internal	(mqx_d.a ti_deli.o      )
-  200067A4 0000005C .text   _time_delay_until	(mqx_d.a ti_delun.o     )
-  20006800 0000008C .text   _time_get_ticks	(mqx_d.a ti_gett.o      )
-  2000688C 0000001E .text   _time_set_ticks_per_sec	(mqx_d.a ti_sett.o      )
-  200068AA 00000028 .text   _time_set_hwtick_function	(mqx_d.a ti_shwtf.o     )
-  200068D2 0000001E .text   _time_set_hwticks_per_tick	(mqx_d.a ti_shwtt.o     )
-  200068F0 00000114 .text   _lwsem_post	(mqx_d.a lws_post.o     )
-  20006A04 000000EC .text   _lwsem_wait	(mqx_d.a lws_wait.o     )
-  20006AF0 00000086 .text   _psp_add_ticks	(mqx_d.a psp_tiad.o     )
-  20006B76 0000006C .text   _psp_normalize_ticks	(mqx_d.a psp_tinm.o     )
-  20006BE2 000001FC .text   _psp_usecs_to_ticks	(mqx_d.a psp_usti.o     )
-  20006DDE 00000068 .text   _psp_set_kernel_disable_level	(mqx_d.a sc_irdyq.o     )
-  20006E46 00000126 .text   _psp_init_readyqs	(mqx_d.a sc_irdyq.o     )
-  20006F6C 000000D2 .text   _psp_build_stack_frame	(mqx_d.a stack_bu.o     )
-  2000703E 00000070 .text   _psp_build_float_context	(mqx_d.a stack_bu.o     )
-  200070AE 0000002E .text   _psp_set_sr	(mqx_d.a int_sr.o       )
-  200070DC 00000018 .text   _psp_get_sr	(mqx_d.a int_sr.o       )
-  200070F4 00000048 .text   _psp_int_install	(mqx_d.a int_inst.o     )
-  2000713C 00000030 .text   _int_set_vector_table	(mqx_d.a int_vtab.o     )
-  2000716C 00000014 .text   _int_get_vector_table	(mqx_d.a int_vtab.o     )
-  20007180 0000003A .text   _mem_zero	(mqx_d.a mem_zero.o     )
-  200071BA 0000003A .text   _psp_int_init	(mqx_d.a psp_iinit.o    )
-  200071F4 000000F0 .text   _mem_verify	(mqx_d.a mem_vrfy.o     )
-  200072E4 0000036A .text   _mem_alloc_internal	(mqx_d.a mem_alli.o     )
-  2000764E 00000078 .text   _mem_alloc	(mqx_d.a mem_allo.o     )
-  200076C6 00000090 .text   _mem_alloc_zero	(mqx_d.a mem_allz.o     )
-  20007756 000001DC .text   _mem_create_pool_internal	(mqx_d.a mem_crei.o     )
-  20007932 000002CA .text   _mem_free	(mqx_d.a mem_free.o     )
-  20007BFC 0000026A .text   _mem_check_coalesce_internal	(mqx_d.a mem_frei.o     )
-  20007E66 0000007C .text   _mem_alloc_system	(mqx_d.a mem_gsys.o     )
-  20007EE2 00000086 .text   _mem_init_internal	(mqx_d.a mem_init.o     )
-  20007F68 00000072 .text   _queue_dequeue	(mqx_d.a qu_deq.o       )
-  20007FDA 00000080 .text   _queue_enqueue	(mqx_d.a qu_enq.o       )
-  2000805A 00000020 .text   _queue_init	(mqx_d.a qu_init.o      )
-  2000807A 00000086 .text   _queue_insert	(mqx_d.a qu_insrt.o     )
-  20008100 00000BDC .text   _io_doprint	(mqx_d.a io_dopr.o      )
-  20008CDC 0000018A .text   _io_doprint_prt	(mqx_d.a io_dopr.o      )
-  20008E66 0000016A .text   _io_fopen	(mqx_d.a io_fopen.o     )
-  20008FD0 0000007C .text   _io_fputc	(mqx_d.a io_fputc.o     )
-  2000904C 0000004C .text   _io_printf	(mqx_d.a io_pntf.o      )
-  20009098 0000008A .text   _io_get_handle	(mqx_d.a io_ghand.o     )
-  20009122 00000030 .text   _io_init	(mqx_d.a io_init.o      )
-  20009152 00000052 .text   _io_dev_install	(mqx_d.a io_inst.o      )
-  200091A4 00000218 .text   _io_dev_install_ext	(mqx_d.a io_instx.o     )
-  200093BC 0000003E .text   _mcf5225_initialize_support	(mqx_d.a mcf5225.o      )
-  200093FC 00000005 .rodata @34	(main.c)
-  20009401 00000008 .rodata @35	(main.c)
-  20009409 00000009 .rodata @36	(main.c)
-  20009412 00000009 .rodata @37	(main.c)
-  2000941B 00000004 .rodata @38	(main.c)
-  2000941F 00000020 .rodata @435	(main.c)
-  2000943F 00000006 .rodata @23	(m52259demo_d.a mqx_init.o     )
-  20009448 00000030 .rodata MQX_init_struct	(m52259demo_d.a mqx_init.o     )
-  20009478 00000010 .rodata _bsp_timers	(m52259demo_d.a init_bsp.o     )
-  20009488 00000006 .rodata @60	(m52259demo_d.a init_bsp.o     )
-  2000948E 00000006 .rodata @61	(m52259demo_d.a init_bsp.o     )
-  20009494 0000000B .rodata @351	(m52259demo_d.a io_gpio_mcf5225)
-  2000949F 0000000C .rodata @352	(m52259demo_d.a io_gpio_mcf5225)
-  200094AB 0000000A .rodata @353	(m52259demo_d.a io_gpio_mcf5225)
-  200094B5 0000000B .rodata @354	(m52259demo_d.a io_gpio_mcf5225)
-  200094C0 00000020 .rodata _bsp_uart0_init	(m52259demo_d.a init_uart0.o   )
-  200094E0 0000000F .rodata @30	(mqx_d.a mqxiinit.o     )
-  200094EF 00000011 .rodata upper_hex_string	(mqx_d.a io_dopr.o      )
-  20009500 00000011 .rodata lower_hex_string	(mqx_d.a io_dopr.o      )
+  200009F4 0000004E .text   adcISR	(main.c)
+  20000A42 00000096 .text   setupISR	(main.c)
+  20000AD8 00000042 .text   add_sample	(main.c)
+  20000B1A 0000002A .text   main_task	(main.c)
+  20000B44 000000FA .text   lowpass_task	(main.c)
+  20000C3E 0000000A .text   highpass_task	(main.c)
+  20000C48 0000000A .text   bandpass_task	(main.c)
+  20000C52 000000D8 .text   isr_task	(main.c)
+  20000D2A 0000008C .text   init_qspi	(init.c)
+  20000DB6 00000022 .text   init_pins	(init.c)
+  20000DD8 00000022 .text   init_pit0	(init.c)
+  20000DFA 0000002A .text   __destroy_global_chain	(C_4i_CF_StdABI_Runtime.a cf_staticinitia)
+  20000E24 00000004 .text   _ExitProcess	(C_4i_CF_StdABI_Runtime.a cf_startup.o   )
+  20000E28 00000064 .text   clear_mem	(C_4i_CF_StdABI_Runtime.a cf_startup.o   )
+  20000E8C 00000094 .text   _start	(C_4i_CF_StdABI_Runtime.a cf_startup.o   )
+  20000F20 0000001E .text   __rt_sub64	(C_4i_CF_StdABI_Runtime.a longlongcf.o   )
+  20000F3E 00000050 .text   __rt_mul64	(C_4i_CF_StdABI_Runtime.a longlongcf.o   )
+  20000F8E 000000EE .text   __rt_divmod64	(C_4i_CF_StdABI_Runtime.a longlongcf.o   )
+  2000107C 00000030 .text   __rt_divu64	(C_4i_CF_StdABI_Runtime.a longlongcf.o   )
+  200010AC 00000030 .text   __rt_modu64	(C_4i_CF_StdABI_Runtime.a longlongcf.o   )
+  200010DC 0000002E .text   __rt_shl64	(C_4i_CF_StdABI_Runtime.a longlongcf.o   )
+  2000110A 00000034 .text   __rt_shru64	(C_4i_CF_StdABI_Runtime.a longlongcf.o   )
+  2000113E 00000024 .text   __rt_cmpu64	(C_4i_CF_StdABI_Runtime.a longlongcf.o   )
+  20001162 00000008 .text   simple_block_copy	(C_4i_CF_StdABI_Runtime.a romcopy.o      )
+  2000116A 0000001E .text   __copy_rom_section	(C_4i_CF_StdABI_Runtime.a romcopy.o      )
+  20001188 0000005A .text   __copy_rom_sections_to_ram	(C_4i_CF_StdABI_Runtime.a romcopy.o      )
+  200011E2 00000032 .text   exit	(C_4i_CF_StdABI_MSL.a abort_exit_cf.o)
+  20001214 00000036 .text   __exit	(C_4i_CF_StdABI_MSL.a abort_exit_cf.o)
+  2000124A 00000048 .text   strncmp	(C_4i_CF_StdABI_MSL.a string.o       )
+  20001294 00000762 .text   .text	(fp_coldfire.o fadd.o         )
+  20001294 00000000 .text   _f_sub	(fp_coldfire.o fadd.o         )
+  200012B0 00000000 .text   _f_add	(fp_coldfire.o fadd.o         )
+  200019F8 00000000 .text   _f_mul	(fp_coldfire.o fmul.o         )
+  200019F8 00000504 .text   .text	(fp_coldfire.o fmul.o         )
+  20001EFC 000000E2 .text   .text	(fp_coldfire.o fterminals.o   )
+  20001EFC 00000000 .text   _fp_f_overflow	(fp_coldfire.o fterminals.o   )
+  20001F5C 00000000 .text   _fp_f_underflow	(fp_coldfire.o fterminals.o   )
+  20001F9E 00000000 .text   _fp_f_directed_rounding	(fp_coldfire.o fterminals.o   )
+  20001FE0 00000000 .text   _f_ftoi	(fp_coldfire.o ftoi.o         )
+  20001FE0 000000BA .text   .text	(fp_coldfire.o ftoi.o         )
+  2000209C 00000000 .text   _f_utof	(fp_coldfire.o int_to_f.o     )
+  2000209C 00000168 .text   .text	(fp_coldfire.o int_to_f.o     )
+  2000210C 00000000 .text   _f_itof	(fp_coldfire.o int_to_f.o     )
+  20002128 00000000 .text   _f_ulltof	(fp_coldfire.o int_to_f.o     )
+  200021BC 00000000 .text   _f_lltof	(fp_coldfire.o int_to_f.o     )
+  20002204 00000054 .text   _io_serial_default_init	(m52259demo_d.a io_sinit.o     )
+  20002258 000000C8 .text   _io_serial_polled_install	(m52259demo_d.a serl_pol.o     )
+  20002320 00000114 .text   _io_serial_polled_open	(m52259demo_d.a serl_pol.o     )
+  20002434 00000084 .text   _io_serial_polled_close	(m52259demo_d.a serl_pol.o     )
+  200024B8 00000390 .text   _io_serial_polled_read	(m52259demo_d.a serl_pol.o     )
+  20002848 00000220 .text   _io_serial_polled_write	(m52259demo_d.a serl_pol.o     )
+  20002A68 000000E8 .text   _io_serial_polled_ioctl	(m52259demo_d.a serl_pol.o     )
+  20002B50 00000124 .text   _mcf5225_timer_init_freq	(m52259demo_d.a tmcf5225.o     )
+  20002C74 00000084 .text   _mcf5225_get_hwticks	(m52259demo_d.a tmcf5225.o     )
+  20002CF8 00000118 .text   compute_icntl_registers	(m52259demo_d.a cmcf5225.o     )
+  20002E10 000000CC .text   _mcf5225_int_init	(m52259demo_d.a cmcf5225.o     )
+  20002EDC 00000068 .text   _mcf5225_int_unmask	(m52259demo_d.a cmcf5225.o     )
+  20002F44 00000020 .text   _mcf5225_int_mask_all	(m52259demo_d.a cmcf5225.o     )
+  20002F64 000000CC .text   mcf5225_init	(m52259demo_d.a bsp_init.o     )
+  20003030 0000001C .text   main	(m52259demo_d.a cw2.o          )
+  2000304C 00000018 .text   __initialize_hardware	(m52259demo_d.a cw.o           )
+  20003064 00000008 .text   __initialize_OS	(m52259demo_d.a cw.o           )
+  2000306C 0000004C .text   __cpp_init	(m52259demo_d.a cw.o           )
+  200030B8 00000164 .text   _bsp_enable_card	(m52259demo_d.a init_bsp.o     )
+  2000321C 00000054 .text   _bsp_timer_isr	(m52259demo_d.a init_bsp.o     )
+  20003270 00000018 .text   _bsp_get_hwticks	(m52259demo_d.a init_bsp.o     )
+  20003288 00000068 .text   _bsp_setup_watchdog	(m52259demo_d.a init_bsp.o     )
+  200032F0 00000098 .text   _io_gpio_install	(m52259demo_d.a io_gpio.o      )
+  20003388 00000194 .text   _io_gpio_open	(m52259demo_d.a io_gpio.o      )
+  2000351C 00000064 .text   _io_gpio_close	(m52259demo_d.a io_gpio.o      )
+  20003580 0000000C .text   _io_gpio_read	(m52259demo_d.a io_gpio.o      )
+  2000358C 0000000C .text   _io_gpio_write	(m52259demo_d.a io_gpio.o      )
+  20003598 00000930 .text   gpio_cpu_configure	(m52259demo_d.a io_gpio_mcf5225)
+  20003EC8 00000024 .text   gpio_cpu_init	(m52259demo_d.a io_gpio_mcf5225)
+  20003EEC 000002E4 .text   gpio_cpu_open	(m52259demo_d.a io_gpio_mcf5225)
+  200041D0 000008CC .text   gpio_cpu_ioctl	(m52259demo_d.a io_gpio_mcf5225)
+  20004A9C 00000038 .text   _bsp_get_serial_base_address	(m52259demo_d.a serl_mcf5225.o )
+  20004AD4 00000068 .text   _mcf52xx_uart_serial_polled_install	(m52259demo_d.a serl_pol_mcf52x)
+  20004B3C 00000110 .text   _mcf52xx_uart_serial_polled_init	(m52259demo_d.a serl_pol_mcf52x)
+  20004C4C 00000018 .text   _mcf52xx_uart_serial_polled_deinit	(m52259demo_d.a serl_pol_mcf52x)
+  20004C64 0000002C .text   _mcf52xx_uart_serial_polled_getc	(m52259demo_d.a serl_pol_mcf52x)
+  20004C90 00000030 .text   _mcf52xx_uart_serial_polled_putc	(m52259demo_d.a serl_pol_mcf52x)
+  20004CC0 00000028 .text   _mcf52xx_uart_serial_polled_status	(m52259demo_d.a serl_pol_mcf52x)
+  20004CE8 000002AC .text   _mcf52xx_uart_serial_polled_ioctl	(m52259demo_d.a serl_pol_mcf52x)
+  20004F94 00000084 .text   _bsp_serial_io_init	(m52259demo_d.a gpio_init.o    )
+  20005018 0000001E .text   _time_set_timer_vector	(mqx_d.a ti_setv.o      )
+  20005036 0000004C .text   _int_disable	(mqx_d.a int_disa.o     )
+  20005082 00000070 .text   _int_enable	(mqx_d.a int_ena.o      )
+  200050F2 00000098 .text   _int_install_isr	(mqx_d.a int_iisr.o     )
+  2000518A 00000064 .text   _int_default_isr	(mqx_d.a int_isr.o      )
+  200051EE 000000A6 .text   _lwsem_create	(mqx_d.a lws_crea.o     )
+  20005294 0000002E .text   _mem_set_type	(mqx_d.a mem_util.o     )
+  200052C2 0000006E .text   _mem_transfer_internal	(mqx_d.a mem_xfri.o     )
+  20005330 00000094 .text   _mem_alloc_system_zero	(mqx_d.a mem_zsys.o     )
+  200053C4 0000039E .text   _mqx	(mqx_d.a mqx.o          )
+  20005762 0000001C .text   _mqx_exit	(mqx_d.a mqx.o          )
+  2000577E 0000001E .text   _mqx_set_cpu_type	(mqx_d.a mqx_scpu.o     )
+  2000579C 000001D8 .text   _mqx_init_kernel_data_internal	(mqx_d.a mqxiinit.o     )
+  20005974 0000010A .text   _task_build_internal	(mqx_d.a ta_build.o     )
+  20005A7E 000000E0 .text   _task_create	(mqx_d.a ta_creat.o     )
+  20005B5E 0000002C .text   _task_exit_function_internal	(mqx_d.a ta_exit.o      )
+  20005B8A 00000310 .text   _task_init_internal	(mqx_d.a ta_init.o      )
+  20005E9A 00000042 .text   _task_fill_stack_internal	(mqx_d.a ta_init.o      )
+  20005EDC 00000070 .text   _task_ready_internal	(mqx_d.a ta_init.o      )
+  20005F4C 0000007E .text   _task_ready	(mqx_d.a ta_rdy.o       )
+  20005FCA 000001A4 .text   _task_alloc_td_internal	(mqx_d.a td_alloc.o     )
+  2000616E 00000090 .text   _task_get_td	(mqx_d.a td_get.o       )
+  200061FE 0000007A .text   _task_set_error	(mqx_d.a td_serr.o      )
+  20006278 00000034 .text   _task_set_error_td_internal	(mqx_d.a td_serrt.o     )
+  200062AC 00000324 .text   _time_notify_kernel	(mqx_d.a ti_krnl.o      )
+  200065D0 00000060 .text   _mqx_idle_task	(mqx_d.a idletask.o     )
+  20006630 000000DC .text   _int_init	(mqx_d.a int_init.o     )
+  2000670C 00000042 .text   _time_add_usec_to_ticks	(mqx_d.a ti_ausec.o     )
+  2000674E 00000162 .text   _time_delay_internal	(mqx_d.a ti_deli.o      )
+  200068B0 0000005C .text   _time_delay_until	(mqx_d.a ti_delun.o     )
+  2000690C 0000008C .text   _time_get_ticks	(mqx_d.a ti_gett.o      )
+  20006998 0000001E .text   _time_set_ticks_per_sec	(mqx_d.a ti_sett.o      )
+  200069B6 00000028 .text   _time_set_hwtick_function	(mqx_d.a ti_shwtf.o     )
+  200069DE 0000001E .text   _time_set_hwticks_per_tick	(mqx_d.a ti_shwtt.o     )
+  200069FC 00000114 .text   _lwsem_post	(mqx_d.a lws_post.o     )
+  20006B10 000000EC .text   _lwsem_wait	(mqx_d.a lws_wait.o     )
+  20006BFC 00000086 .text   _psp_add_ticks	(mqx_d.a psp_tiad.o     )
+  20006C82 0000006C .text   _psp_normalize_ticks	(mqx_d.a psp_tinm.o     )
+  20006CEE 000001FC .text   _psp_usecs_to_ticks	(mqx_d.a psp_usti.o     )
+  20006EEA 00000068 .text   _psp_set_kernel_disable_level	(mqx_d.a sc_irdyq.o     )
+  20006F52 00000126 .text   _psp_init_readyqs	(mqx_d.a sc_irdyq.o     )
+  20007078 000000D2 .text   _psp_build_stack_frame	(mqx_d.a stack_bu.o     )
+  2000714A 00000070 .text   _psp_build_float_context	(mqx_d.a stack_bu.o     )
+  200071BA 0000002E .text   _psp_set_sr	(mqx_d.a int_sr.o       )
+  200071E8 00000018 .text   _psp_get_sr	(mqx_d.a int_sr.o       )
+  20007200 00000048 .text   _psp_int_install	(mqx_d.a int_inst.o     )
+  20007248 00000030 .text   _int_set_vector_table	(mqx_d.a int_vtab.o     )
+  20007278 00000014 .text   _int_get_vector_table	(mqx_d.a int_vtab.o     )
+  2000728C 0000003A .text   _mem_zero	(mqx_d.a mem_zero.o     )
+  200072C6 0000003A .text   _psp_int_init	(mqx_d.a psp_iinit.o    )
+  20007300 000000F0 .text   _mem_verify	(mqx_d.a mem_vrfy.o     )
+  200073F0 0000036A .text   _mem_alloc_internal	(mqx_d.a mem_alli.o     )
+  2000775A 00000078 .text   _mem_alloc	(mqx_d.a mem_allo.o     )
+  200077D2 00000090 .text   _mem_alloc_zero	(mqx_d.a mem_allz.o     )
+  20007862 000001DC .text   _mem_create_pool_internal	(mqx_d.a mem_crei.o     )
+  20007A3E 000002CA .text   _mem_free	(mqx_d.a mem_free.o     )
+  20007D08 0000026A .text   _mem_check_coalesce_internal	(mqx_d.a mem_frei.o     )
+  20007F72 0000007C .text   _mem_alloc_system	(mqx_d.a mem_gsys.o     )
+  20007FEE 00000086 .text   _mem_init_internal	(mqx_d.a mem_init.o     )
+  20008074 00000072 .text   _queue_dequeue	(mqx_d.a qu_deq.o       )
+  200080E6 00000080 .text   _queue_enqueue	(mqx_d.a qu_enq.o       )
+  20008166 00000020 .text   _queue_init	(mqx_d.a qu_init.o      )
+  20008186 00000086 .text   _queue_insert	(mqx_d.a qu_insrt.o     )
+  2000820C 00000BDC .text   _io_doprint	(mqx_d.a io_dopr.o      )
+  20008DE8 0000018A .text   _io_doprint_prt	(mqx_d.a io_dopr.o      )
+  20008F72 0000016A .text   _io_fopen	(mqx_d.a io_fopen.o     )
+  200090DC 0000007C .text   _io_fputc	(mqx_d.a io_fputc.o     )
+  20009158 0000004C .text   _io_printf	(mqx_d.a io_pntf.o      )
+  200091A4 0000008A .text   _io_get_handle	(mqx_d.a io_ghand.o     )
+  2000922E 00000030 .text   _io_init	(mqx_d.a io_init.o      )
+  2000925E 00000052 .text   _io_dev_install	(mqx_d.a io_inst.o      )
+  200092B0 00000218 .text   _io_dev_install_ext	(mqx_d.a io_instx.o     )
+  200094C8 0000003E .text   _mcf5225_initialize_support	(mqx_d.a mcf5225.o      )
+  20009508 00000005 .rodata @34	(main.c)
+  2000950D 00000008 .rodata @35	(main.c)
+  20009515 00000009 .rodata @36	(main.c)
+  2000951E 00000009 .rodata @37	(main.c)
+  20009527 00000004 .rodata @38	(main.c)
+  2000952B 00000020 .rodata @175	(main.c)
+  2000954B 00000006 .rodata @23	(m52259demo_d.a mqx_init.o     )
+  20009554 00000030 .rodata MQX_init_struct	(m52259demo_d.a mqx_init.o     )
+  20009584 00000010 .rodata _bsp_timers	(m52259demo_d.a init_bsp.o     )
+  20009594 00000006 .rodata @60	(m52259demo_d.a init_bsp.o     )
+  2000959A 00000006 .rodata @61	(m52259demo_d.a init_bsp.o     )
+  200095A0 0000000B .rodata @351	(m52259demo_d.a io_gpio_mcf5225)
+  200095AB 0000000C .rodata @352	(m52259demo_d.a io_gpio_mcf5225)
+  200095B7 0000000A .rodata @353	(m52259demo_d.a io_gpio_mcf5225)
+  200095C1 0000000B .rodata @354	(m52259demo_d.a io_gpio_mcf5225)
+  200095CC 00000020 .rodata _bsp_uart0_init	(m52259demo_d.a init_uart0.o   )
+  200095EC 0000000F .rodata @30	(mqx_d.a mqxiinit.o     )
+  200095FB 00000011 .rodata upper_hex_string	(mqx_d.a io_dopr.o      )
+  2000960C 00000011 .rodata lower_hex_string	(mqx_d.a io_dopr.o      )
 
 # .main_application_data
 #>2000C000          __exception_table_start__ (linker command file)
@@ -11772,21 +11794,22 @@
   2000C1C8 00000004 .sbss   _fpscr	(C_4i_CF_StdABI_MSL.a fenv_cf.o      )
 #>2000C1CC          __END_SBSS (linker command file)
 #>2000C1CC          __START_BSS (linker command file)
-  2000C1CC 00000004 .bss    lowpass_tid	(main.c)
-  2000C1D0 000000C8 .bss    samples	(main.c)
-  2000C298 00000004 .bss    sample_start	(main.c)
-  2000C29C 00000004 .bss    sample_end	(main.c)
-  2000C2A0 00000004 .bss    __global_destructor_chain	(C_4i_CF_StdABI_Runtime.a cf_staticinitia)
-  2000C2A4 00000100 .bss    __atexit_funcs	(C_4i_CF_StdABI_MSL.a abort_exit_cf.o)
-  2000C3A4 0000001C .bss    gpio_sem	(m52259demo_d.a io_gpio.o      )
-  2000C3C0 00000004 .bss    mcf5225_gpio_ptr	(m52259demo_d.a io_gpio_mcf5225)
-  2000C3C4 00000004 .bss    _mqx_system_stack	(mqx_d.a mqx.o          )
-  2000C3C8 00000004 .bss    _psp_saved_acr0	(mqx_d.a mcf5225.o      )
-  2000C3CC 00000004 .bss    _psp_saved_acr1	(mqx_d.a mcf5225.o      )
-#>2000C3D0          __END_BSS (linker command file)
+  2000C1CC 00000004 .bss    uartRegisterMask	(main.c)
+  2000C1D0 00000004 .bss    lowpass_tid	(main.c)
+  2000C1D4 000000C8 .bss    samples	(main.c)
+  2000C29C 00000004 .bss    sample_start	(main.c)
+  2000C2A0 00000004 .bss    sample_end	(main.c)
+  2000C2A4 00000004 .bss    __global_destructor_chain	(C_4i_CF_StdABI_Runtime.a cf_staticinitia)
+  2000C2A8 00000100 .bss    __atexit_funcs	(C_4i_CF_StdABI_MSL.a abort_exit_cf.o)
+  2000C3A8 0000001C .bss    gpio_sem	(m52259demo_d.a io_gpio.o      )
+  2000C3C4 00000004 .bss    mcf5225_gpio_ptr	(m52259demo_d.a io_gpio_mcf5225)
+  2000C3C8 00000004 .bss    _mqx_system_stack	(mqx_d.a mqx.o          )
+  2000C3CC 00000004 .bss    _psp_saved_acr0	(mqx_d.a mcf5225.o      )
+  2000C3D0 00000004 .bss    _psp_saved_acr1	(mqx_d.a mcf5225.o      )
+#>2000C3D4          __END_BSS (linker command file)
 
 # .kernel_data
-#>2000C3D0          ___KERNEL_DATA_START (linker command file)
+#>2000C3E0          ___KERNEL_DATA_START (linker command file)
 
 # .end_of_kernel_data
 #>2000FFF0          ___KERNEL_DATA_END (linker command file)
@@ -11804,12 +11827,12 @@
 # Memory map:
   v_addr   p_addr   size     name
   20000000 20000000 00000460 .vectors   vector_table
-  20000500 20000500 00009014 .main_application rom
-  2000C000 2000C000 000003D0 .main_application_data ram
-  2000C3D0 2000C3D0 00000000 .kernel_data ram
+  20000500 20000500 00009120 .main_application rom
+  2000C000 2000C000 000003D4 .main_application_data ram
+  2000C3D4 2000C3D4 0000000C .kernel_data ram
   2000FFF0 2000FFF0 00000000 .end_of_kernel_data end_of_kd
   2000FE00 2000FE00 00000000 .boot_stack bstack
   2000FFF0 2000FFF0 00000000 .end_of_boot_stack end_bstack
 
-# Link start time: Mon Mar 31 20:34:01 2014
-# Link end time: Mon Mar 31 20:34:01 2014
+# Link start time: Mon Mar 31 23:45:15 2014
+# Link end time: Mon Mar 31 23:45:16 2014

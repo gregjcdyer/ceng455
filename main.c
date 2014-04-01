@@ -130,7 +130,7 @@ fixed point precision: 16 bits
 */
 
 float lowpass_hw[MAX_FILTER_LEN] = {
-0.0003, 0.0009, 0.0013, 0.0014, 0.0007, -0.0009, -0.0029, -0.0046, -0.0047, -0.0022, 0.0028, 0.0089, 0.0133, 0.0130, 0.0060, -0.0072, -0.0227, -0.0340, -0.0336, -0.0159, 0.0202, 0.0700, 0.1240, 0.1698, 0.1960, 0.1960, 0.1698, 0.1240, 0.0700, 0.0202, -0.0159, -0.0336, -0.0340, -0.0227, -0.0072, 0.0060, 0.0130, 0.0133, 0.0089, 0.0028, -0.0022, -0.0047, -0.0046, -0.0029, -0.0009, 0.0007, 0.0014, 0.0013, 0.0009, 0.0003
+0.00000076635,0.0000047781,0.00000372524,-0.0000258716,-0.0000272361,0.0001085953,0.00009108749,-0.0003815554,-0.0001723751,0.0011218732,0.00004614935,-0.0027449401,0.00099762304,0.0055583251,-0.0044443313,-0.0091592933,0.01261856650,0.011542290651866668471647869864682434127,-0.02850350626440021142848912916178960586,-0.007956283372453531316237373971489432734,0.056488036381801637331179222201171796769,-0.01252239223073738083602535198224359192,-0.11216152436952522841728807634353870526,0.102090133574318078779619156648550415412,0.487428290877695236105182630126364529133,0.487428290877695236105182630126364529133,0.102090133574318078779619156648550415412,-0.11216152436952522841728807634353870526,-0.01252239223073738083602535198224359192,0.056488036381801637331179222201171796769,-0.007956283372453531316237373971489432734,-0.02850350626440021142848912916178960586,0.011542290651866668471647869864682434127,0.012618566508578548529539986589043110143,-0.009159293321960382608382111868650099495,-0.004444331374034442456999460802080648136,0.005558325107595130966375851500060889521,0.000997623042566911583453603817872590298,-0.002744940164549028449592071865481557325,0.000046149350388064694535039667044884482,0.001121873284800864543214737878429332341,-0.000172375191428413623026885681532860417,-0.000381555497162257598823403847987378867,0.000091087499585167943337571383466411135,0.000108595350101245384359140155883238776,-0.000027236128298027087213687910671744419,-0.000025871626355375813030666037883875674,0.000003725246606160502796638994693623204,0.000004778108121752780376733944073253113,0.000000766353024634118868906008329583424
 };
 
 float highpass_hw[MAX_FILTER_LEN] = {-0.0000,0.0037,0.0114,0.0164,-0.0000,-0.0538,-0.1378,-0.2174,0.7507,-0.2174,-0.1378,-0.0538,-0.0000,0.0164,0.0114,0.0037,-0.0000};
@@ -152,7 +152,7 @@ TASK_TEMPLATE_STRUCT  MQX_template_list[] =
     {LOWPASS_TASK,  lowpass_task,  700, 8, "lowpass",  MQX_TIME_SLICE_TASK, 0, 0},
     {HIGHPASS_TASK, highpass_task, 700, 8, "highpass", MQX_TIME_SLICE_TASK, 0, 0},
     {BANDPASS_TASK, bandpass_task, 700, 8, "bandpass", MQX_TIME_SLICE_TASK, 0, 0},
-    {ISR_TASK,      isr_task,      700, 8, "isr",      MQX_TIME_SLICE_TASK | MQX_AUTO_START_TASK, 0, 0},
+    {ISR_TASK,      isr_task,      700, 8, "isr",      MQX_TIME_SLICE_TASK, 0, 0},
     {0,          0,          0,   0, 0,       0,                   0, 0}
 };
 
@@ -166,11 +166,14 @@ void adc_init() {
 }
 
 void adcISR() {
-    _int_disable();
+    //_int_disable();
 
-    add_sample((uint_32)((reg_ptr -> ADC.ADRSLT[0]) >> 3));
+    while(!((reg_ptr -> ADC.ADSTAT) & 0x0001));
 
-    _int_enable();
+    MCF_QSPI_QAR = 0x0000;
+    MCF_QSPI_QDR = (((reg_ptr -> ADC.ADRSLT[0]) >> 3) | 0x3000);
+
+    //_int_enable();
 }
 
 void setupISR() {
@@ -178,13 +181,20 @@ void setupISR() {
 
     uartRegisterMask = MCF_UART_UIMR_FFULL_RXRDY;
 	MCF_UART0_UMR2 |= MCF_UART_UMR_CM_NORMAL;
+    
+    // Initialize PIT0 interrupt
+    MCF_INTC0_IMRH &= ~MCF_INTC_IMRL_MASKALL;
+    MCF_INTC0_IMRH &= ~MCF_INTC_IMRH_INT_MASK55;
+    MCF_INTC0_IMRL &= ~MCF_INTC_IMRL_MASKALL;
+    MCF_INTC0_ICR55 |= MCF_INTC_ICR_IP(0x5) | MCF_INTC_ICR_IL(0x5);
+    _int_install_isr(64+55, &adcISR, NULL);
 
     // Initialize ADC interrupt
-    MCF_INTC0_IMRH &= ~MCF_INTC_IMRL_MASKALL;
+    /*MCF_INTC0_IMRH &= ~MCF_INTC_IMRL_MASKALL;
     MCF_INTC0_IMRH &= ~MCF_INTC_IMRH_INT_MASK49;
     MCF_INTC0_IMRL &= ~MCF_INTC_IMRL_MASKALL;
     MCF_INTC0_ICR49 |= MCF_INTC_ICR_IP(0x5) | MCF_INTC_ICR_IL(0x5);
-    _int_install_isr(64+49, &adcISR, NULL);
+    _int_install_isr(64+49, &adcISR, NULL);*/
 
     _int_enable();
 }
@@ -197,85 +207,19 @@ void add_sample(int sample) {
     sample_end = (sample_end + 1) % MAX_FILTER_LEN;
 }
 
-void set_lowpass_hw(int_32 cutoff_freq, int_32 sample_freq) {
-    int i = 0, midpoint = MAX_FILTER_LEN - 1;
-    float trans_freq, hw_sum = 0;
-
-    lowpass_tid = _task_get_id();
-
-    trans_freq = (float)cutoff_freq / (float)sample_freq;
-
-    for(i = 0; i < MAX_FILTER_LEN; i++) {
-        float h;
-        if(i == (int)(midpoint / 2)) {
-            h = 2*trans_freq;
-        } else {
-            h = (my_sin(2 * MY_PI * trans_freq * ( i+ 1 - midpoint / 2)) / (MY_PI * (i + 1 - midpoint / 2)));
-        }
-
-        lowpass_hw[i] = h * (0.5 * (1 - my_cos(2 * MY_PI * i / (MAX_FILTER_LEN - 1))));
-
-        if(lowpass_hw[i] >= 0) {
-            hw_sum += lowpass_hw[i];
-        } else {
-            hw_sum += -lowpass_hw[i];
-        }
-    }
-
-    for(i = 0; i < MAX_FILTER_LEN; i++) {
-        lowpass_hw[i] = lowpass_hw[i] / hw_sum;
-    }
-}
-
-void set_lowpass_hw_slow(int cutoff_freq, int sample_freq) {
-	int i, midpoint = MAX_FILTER_LEN - 1;
-	float trans_freq, hw_sum = 0.0;
-	float h[MAX_FILTER_LEN] = {0.0, };
-	float hw[MAX_FILTER_LEN] = {0.0, };
-    float w[MAX_FILTER_LEN] = {0.0, 0.030154, 0.116978, 0.250001, 0.413177,
-                               0.586825, 0.750001, 0.883021, 0.969847, 1.0,
-                               0.969847, 0.883021, 0.750001, 0.586825, 0.413177,
-                               0.250001, 0.116978, 0.030154};
-
-	trans_freq = (float)cutoff_freq / (float)sample_freq;
-
-	for(i = 0; i < MAX_FILTER_LEN; i++) {
-		if(i == midpoint / 2) {
-			h[i] = 2 * trans_freq;
-		} else {
-			h[i] = my_sin(2 * MY_PI * trans_freq * (i - midpoint / 2)) / (MY_PI * (i - midpoint / 2));
-		}
-	}
-
-	/*for(i = 0; i < MAX_FILTER_LEN; i++) {
-		w[i] = 0.5 * (1 - my_cos(2 * MY_PI * i / midpoint));
-	}*/
-
-	for(i = 0; i < MAX_FILTER_LEN; i++) {
-		hw[i] = h[i] * w[i];
-	}
-
-	for(i = 0; i < MAX_FILTER_LEN; i++) {
-		hw_sum += abs(hw[i]);
-	}
-
-	for(i = 0; i < MAX_FILTER_LEN; i++) {
-		hw[i] = hw[i] / hw_sum;
-        lowpass_hw[i] = hw[i];
-	}
-}
-
 extern void main_task(uint_32 initial_data) {
 
-    lowpass_tid = _task_create(0, LOWPASS_TASK, 0);
+    /*lowpass_tid = _task_create(0, LOWPASS_TASK, 0);
     if (lowpass_tid == MQX_NULL_TASK_ID){
         printf("Unable to create lowpass task!\n");
         _task_block();
-    }
+    }*/
 
     adc_init();
     init_pins();
     init_qspi();
+    init_pit0();
+    setupISR();
 
     while(1) {
         _task_block();
@@ -317,6 +261,12 @@ extern void isr_task(uint_32 initial_data) {
     TD_STRUCT_PTR lowpass_td_ptr;
     MQX_TICK_STRUCT ticks;
     uint_32 sample_read = 0;
+
+    lowpass_tid = _task_create(0, LOWPASS_TASK, 0);
+    if (lowpass_tid == MQX_NULL_TASK_ID){
+        printf("Unable to create lowpass task!\n");
+        _task_block();
+    }
     
     lowpass_td_ptr = _task_get_td(lowpass_tid);
 
