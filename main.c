@@ -134,7 +134,7 @@ int char_count = 0;
 int enabled_input = 0;
 int output_channel = 0;
 
-filter_type_t enabled_filter = bandpass;
+filter_type_t enabled_filter = 4;
 
 TASK_TEMPLATE_STRUCT  MQX_template_list[] = 
 { 
@@ -148,12 +148,12 @@ TASK_TEMPLATE_STRUCT  MQX_template_list[] =
 };
 
 void init_adc(void) {
-    reg_ptr -> ADC.POWER &= ~(MCF_ADC_POWER_APD | MCF_ADC_POWER_PD0);
+    reg_ptr -> ADC.POWER &= ~(MCF_ADC_POWER_APD | MCF_ADC_POWER_PD0 | MCF_ADC_POWER_PD1);
     reg_ptr -> ADC.POWER |= MCF_ADC_POWER_PD1;
     while(MCF_ADC_POWER & MCF_ADC_POWER_PSTS0);
     reg_ptr -> ADC.CTRL2 = 0x0002;
     reg_ptr -> ADC.ADSDIS = 0x0000;
-    reg_ptr -> ADC.CTRL1 = 0x2002;
+    reg_ptr -> ADC.CTRL1 = 0x200A;
 }
 
 void init_uart_isr ( void ){
@@ -350,10 +350,60 @@ void isr_task(uint_32 initial_data) {
         _time_add_usec_to_ticks(&ticks, 500);
         _time_delay_until(&ticks);
 
+        //reg_ptr -> ADC.CTRL1 = 0x4002;
+/*
+        switch(enabled_input){
+            case 0:
+                reg_ptr -> ADC.ADSDIS = 0x00FE;//(uint_32)((reg_ptr -> ADC.ADRSLT[enabled_input]) >> 3);
+                //reg_ptr -> ADC.ADLST1 = 0x0000;
+                reg_ptr -> ADC.CTRL1 = 0x2002;
+                while(!((reg_ptr -> ADC.ADSTAT) & 0x0001));
+                break;
+            case 1:
+                reg_ptr -> ADC.ADSDIS = 0x00FD;//(uint_32)((reg_ptr -> ADC.ADRSLT[enabled_input]) >> 3);
+                //reg_ptr -> ADC.ADLST1 = 0x0001;
+                reg_ptr -> ADC.CTRL1 = 0x2002;
+                while(!((reg_ptr -> ADC.ADSTAT) & 0x0002));
+                break;
+            case 2:
+                reg_ptr -> ADC.ADSDIS = 0x00FB;//(uint_32)((reg_ptr -> ADC.ADRSLT[enabled_input]) >> 3);
+                reg_ptr -> ADC.CTRL1 = 0x2002;
+                while(!((reg_ptr -> ADC.ADSTAT) & 0x0004));
+                break;
+            case 3:
+                reg_ptr -> ADC.ADSDIS = 0x00F7;//(uint_32)((reg_ptr -> ADC.ADRSLT[enabled_input]) >> 3);
+                reg_ptr -> ADC.CTRL1 = 0x2002;
+                while(!((reg_ptr -> ADC.ADSTAT) & 0x0008));
+                break;
+            case 4:
+                reg_ptr -> ADC.ADSDIS = 0x00EF;//(uint_32)((reg_ptr -> ADC.ADRSLT[enabled_input]) >> 3);
+                reg_ptr -> ADC.CTRL1 = 0x2002;
+                while(!((reg_ptr -> ADC.ADSTAT) & 0x0010));
+                break;
+            case 5:
+                reg_ptr -> ADC.ADSDIS = 0x00DF;//(uint_32)((reg_ptr -> ADC.ADRSLT[enabled_input]) >> 3);
+                reg_ptr -> ADC.CTRL1 = 0x2002;
+                while(!((reg_ptr -> ADC.ADSTAT) & 0x0020));
+                break;
+            case 6:
+                reg_ptr -> ADC.ADSDIS = 0x00BF;//(uint_32)((reg_ptr -> ADC.ADRSLT[enabled_input]) >> 3);
+                reg_ptr -> ADC.CTRL1 = 0x2002;
+                while(!((reg_ptr -> ADC.ADSTAT) & 0x0040));
+                break;
+            case 7:
+                reg_ptr -> ADC.ADSDIS = 0x007F;//(uint_32)((reg_ptr -> ADC.ADRSLT[enabled_input]) >> 3);
+                reg_ptr -> ADC.CTRL1 = 0x2002;
+                while(!((reg_ptr -> ADC.ADSTAT) & 0x0080));
+                break;
+            default:
+                break;
+        }
+        //reg_ptr -> ADC.ADSDIS = 0x0000;
         // wait for the ADC to have a sample ready
-        while(!((reg_ptr -> ADC.ADSTAT) & 0x00FF));
+        */
+        //while(!((reg_ptr -> ADC.ADSTAT) & 0x0001));
         
-        // only for debugging purposes.
+      
         switch(enabled_input){
             case 0:
                 sample_read = MCF_ADC_ADRSLT0 >> 3;//(uint_32)((reg_ptr -> ADC.ADRSLT[enabled_input]) >> 3);
@@ -385,25 +435,18 @@ void isr_task(uint_32 initial_data) {
         // Add sample to circular buffers
         add_sample(sample_read);
 
-        //switch(enabled_filter) {
-            //case lowpass:
-                if (lowpass_td_ptr != NULL) {
-	                 _task_ready(lowpass_td_ptr);
-	            }
-                //break;
-            //case highpass:
-                if (highpass_td_ptr != NULL) {
-	                 _task_ready(highpass_td_ptr);
-	            }
-                //break;
-            //case bandpass:
-                if (bandpass_td_ptr != NULL) {
-	                _task_ready(bandpass_td_ptr);
-	            }
-                //break;
-            //default:
-                //break;
-        //}
+        if (lowpass_td_ptr != NULL) {
+             _task_ready(lowpass_td_ptr);
+        }
+
+        if (highpass_td_ptr != NULL) {
+             _task_ready(highpass_td_ptr);
+        }
+
+        if (bandpass_td_ptr != NULL) {
+            _task_ready(bandpass_td_ptr);
+        }
+
     }
 }
 
