@@ -10,7 +10,7 @@
 #define SAMPLING_FREQUENCY  2075
 
 #define MAX_FILTER_LEN      19
-#define MAX_BUFFER_LEN      20
+#define MAX_BUFFER_LEN      8
 
 typedef enum {
    term_in,

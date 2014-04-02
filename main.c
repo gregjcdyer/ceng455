@@ -130,6 +130,9 @@ int samples[MAX_FILTER_LEN] = {0, };
 int sample_start = 0;
 int sample_end = 0;
 int filter_flag = 0;
+int char_count = 0;
+int enabled_input = 0;
+int output_channel = 0;
 
 filter_type_t enabled_filter = bandpass;
 
@@ -148,9 +151,9 @@ void init_adc(void) {
     reg_ptr -> ADC.POWER &= ~(MCF_ADC_POWER_APD | MCF_ADC_POWER_PD0);
     reg_ptr -> ADC.POWER |= MCF_ADC_POWER_PD1;
     while(MCF_ADC_POWER & MCF_ADC_POWER_PSTS0);
-    reg_ptr -> ADC.CTRL2 = 0x0008;
-    reg_ptr -> ADC.ADSDIS = 0x00FE;
-    reg_ptr -> ADC.CTRL1 = 0x2802;
+    //reg_ptr -> ADC.CTRL2 = 0x0008;
+    reg_ptr -> ADC.ADSDIS = 0x0000;
+    reg_ptr -> ADC.CTRL1 = 0x200A;
 }
 
 void init_uart_isr ( void ){
@@ -183,9 +186,10 @@ void uartISR ( void ){
         if (q > 0){
             // q is a char we care about
             append_buffer(q);
+            char_count++;
 			if (td_ptr != NULL){
 				_task_ready(td_ptr);
-                //printf("%c", q);
+                printf("%c", q);
 			}
         }
     }
@@ -201,17 +205,18 @@ void add_sample(int sample) {
 
 // Adds characters to a buffer to be processed
 void append_buffer(char c){
-
-    input_buffer_start = (input_buffer_start + 1) % MAX_BUFFER_LEN;
+    //if(input_buffer_end == (input_buffer_start - 1) % MAX_BUFFER_LEN) {
+    //    input_buffer_start = (input_buffer_start + 1) % MAX_BUFFER_LEN;
+    //}
     input_buffer[input_buffer_end] = c;
-    input_buffer_end = (input_buffer_end + 1) % MAX_BUFFER_LEN; //wrap around
+    input_buffer_end++;
 }
 
 char retrieve_char(void){
     char c = 0;
 
-    c = input_buffer[input_buffer_start];
-    input_buffer_start = (input_buffer_start + 1) % MAX_BUFFER_LEN; //wrap around
+    c = input_buffer[input_buffer_end-1];
+    //input_buffer_end--;// = (input_buffer_start + 1) % MAX_BUFFER_LEN; //wrap around
 
     return c;
 }
@@ -251,25 +256,31 @@ void main_task(uint_32 initial_data) {
 }
 
 void handler_task(uint_32 initial_data) {
-    while (! (input_buffer_start != input_buffer_end)){
-        char c = retrieve_char();
-        char *string;
-        int input_channel;
-        int output_channel;
+    while(1){
+        if (char_count == 7){
 
-        if (c > 0){
-            printf("%c", c);
-            if (c == '\r'){
-                sscanf(&input_buffer, "%s,%d,%d", &string, &input_channel, &output_channel);
-                if (strcmp(&string, "lowpass")){
-                    printf("%s\n", string);
-                } else {
-                    printf("ERROR: Unrecognized command!\n");
-                }
-            }
+            switch (input_buffer[0]){
+                case 'l':
+                    enabled_filter = lowpass;
+                    break;
+                case 'h':
+                    enabled_filter = highpass;
+                    break;
+                case 'b':
+                    enabled_filter = bandpass;
+                    break;
+                default:
+                    enabled_filter = 10;
+                    break;
+            }      
+            // Convert from ASCII
+            enabled_input = input_buffer[3]-48; 
+            output_channel = input_buffer[5]-48;
+            char_count = 0;
+            input_buffer_end = 0;
         }
+        _task_block();
     }
-    _task_block();
 }
 
 
@@ -282,7 +293,7 @@ void lowpass_task() {
         sum = apply_filter(lowpass);
         
         // send the sum to be outputted
-        output_signal(sum, channel_a, lowpass);
+        output_signal(sum, output_channel, lowpass);
 
         // block until the next sample is ready
         _task_block();
@@ -298,7 +309,7 @@ void highpass_task() {
         sum = apply_filter(highpass);
         
         // send the sum to be outputted
-        output_signal(sum, channel_a, highpass);
+        output_signal(sum, output_channel, highpass);
 
         // block until the next sample is ready
         _task_block();
@@ -314,7 +325,7 @@ void bandpass_task() {
         sum = apply_filter(bandpass);
         
         // send the sum to be outputted
-        output_signal(sum, channel_a, bandpass);
+        output_signal(sum, output_channel, bandpass);
 
         // block until the next sample is ready
         _task_block();
@@ -336,14 +347,14 @@ void isr_task(uint_32 initial_data) {
         _time_get_ticks(&ticks);
         
         // 200Hz sample frequency
-        _time_add_usec_to_ticks(&ticks, 5000);
+        _time_add_usec_to_ticks(&ticks, 500);
         _time_delay_until(&ticks);
 
         // wait for the ADC to have a sample ready
         while(!((reg_ptr -> ADC.ADSTAT) & 0x0001));
         
         // only for debugging purposes. 
-        sample_read = (uint_32)((reg_ptr -> ADC.ADRSLT[0]) >> 3);
+        sample_read = (uint_32)((reg_ptr -> ADC.ADRSLT[enabled_input]) >> 3);
 
         // Add sample to circular buffers
         add_sample(sample_read);

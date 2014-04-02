@@ -20,7 +20,7 @@ void init_qspi() {
     // Configure number of bits per transfer to 16
     MCF_QSPI_QMR = MCF_QSPI_QMR_MSTR      |
                    MCF_QSPI_QMR_BITS(0x0) |
-                   MCF_QSPI_QMR_BAUD(10);
+                   MCF_QSPI_QMR_BAUD(5);
 
     //Baud rate = system clock / 2 * baud value
     
