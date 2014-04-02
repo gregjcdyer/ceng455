@@ -1,10 +1,16 @@
-#define MAIN_TASK  10
-#define LOWPASS_TASK 11
-#define HIGHPASS_TASK 11
-#define BANDPASS_TASK 11
-#define ISR_TASK 9
+#define MAIN_TASK           5
+#define HANDLER_TASK        6
+#define LOWPASS_TASK        7
+#define HIGHPASS_TASK       8
+#define BANDPASS_TASK       9
+#define ISR_TASK            10
 
-#define MAX_FILTER_LEN 19
+#define pi                  3.1415962
+#define CUTOFF              100
+#define SAMPLING_FREQUENCY  2075
+
+#define MAX_FILTER_LEN      19
+#define MAX_BUFFER_LEN      20
 
 typedef enum {
    term_in,
@@ -24,10 +30,13 @@ typedef enum {
 } channel_sel_t;
 
 void main_task(uint_32);
-void lowpass_task(uint_32);
-void highpass_task(uint_32);
-void bandpass_task(uint_32);
+void handler_task(uint_32);
+void lowpass_task();
+void highpass_task();
+void bandpass_task();
 void isr_task(uint_32);
+void uartISR();
+void init_uart_isr();
 
 void adcISR();
 void setupISR();
@@ -38,6 +47,8 @@ void add_sample(int sample);
 void set_lowpass_hw(int_32 sample_freq, int_32 cutoff_freq);
 void set_lowpass_hw_slow(int cutoff_freq, int sample_freq);
 void output_signal(int, channel_sel_t, filter_type_t);
+void append_buffer(char c);
+char retrieve_char(void);
 
 typedef struct   td_struct {
    struct td_struct            _PTR_ TD_NEXT;

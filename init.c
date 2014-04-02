@@ -1,6 +1,6 @@
 #include "MCF52259.h"
 #include "init.h"
-
+#include <mqx.h>
 /*void init_adc(void) {
     reg_ptr -> ADC.POWER &= ~(MCF_ADC_POWER_APD | MCF_ADC_POWER_PD0);
     reg_ptr -> ADC.POWER |= MCF_ADC_POWER_PD1;
@@ -9,6 +9,10 @@
     reg_ptr -> ADC.ADSDIS = 0x00FE;
     reg_ptr -> ADC.CTRL1 = 0x2802;
 }*/
+
+//Set up the interrupt service routine for the UART
+//Set the UART to generate an interrupt whenever a character is received from the keyboard.
+
 
 void init_qspi() {
     int i;

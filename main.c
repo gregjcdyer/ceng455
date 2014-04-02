@@ -21,7 +21,7 @@
 *
 * $FileName: main.c$
 * $Version : 3.0.2.0$
-* $Date    : Nov-21-2008$
+* $Date    : Apr-2-2014$
 *
 * Comments:
 *
@@ -42,20 +42,17 @@
 #include "init.h"
 #include "my_math.h"
 
-
 TIME_STRUCT time_global1;
 TIME_STRUCT time_global2;
 uint_32 time_int = 0;
 int counter = 0;
-
+int input_buffer_start = 0;
+int input_buffer_end = 0;
+char input_buffer[MAX_BUFFER_LEN]={0,};
 uint_32 uartRegisterMask = 0;
 
 // Pointer to struct for ADC functions
 VMCF5225_STRUCT_PTR reg_ptr = (VMCF5225_STRUCT_PTR)BSP_IPSBAR;
-
-#define pi 3.1415962
-#define CUTOFF 100
-#define SAMPLING_FREQUENCY 2075
 
 
 float lowpass_hw[MAX_FILTER_LEN] = {
@@ -123,7 +120,8 @@ float bandpass_hw[MAX_FILTER_LEN] = {
 -0.000558209019752277553483299499248460052,
 };
 
-_task_id main_tid = 0;
+_task_id main_tid;
+_task_id handler_tid = 0;
 _task_id lowpass_tid = 0;
 _task_id highpass_tid = 0;
 _task_id bandpass_tid = 0;
@@ -133,15 +131,16 @@ int sample_start = 0;
 int sample_end = 0;
 int filter_flag = 0;
 
-filter_type_t enabled_filter = 10;
+filter_type_t enabled_filter = bandpass;
 
 TASK_TEMPLATE_STRUCT  MQX_template_list[] = 
 { 
     {MAIN_TASK,     main_task,     700, 3, "main",     MQX_TIME_SLICE_TASK | MQX_AUTO_START_TASK, 0, 0},
-    {LOWPASS_TASK,  lowpass_task,  700, 8, "lowpass",  MQX_TIME_SLICE_TASK, 0, 0},
-    {HIGHPASS_TASK, highpass_task, 700, 8, "highpass", MQX_TIME_SLICE_TASK, 0, 0},
-    {BANDPASS_TASK, bandpass_task, 700, 8, "bandpass", MQX_TIME_SLICE_TASK, 0, 0},
     {ISR_TASK,      isr_task,      700, 8, "isr",      MQX_TIME_SLICE_TASK | MQX_AUTO_START_TASK, 0, 0},
+    {HANDLER_TASK,  handler_task,  800, 6, "handler",  0, 0, 0},
+    {BANDPASS_TASK, bandpass_task, 800, 8, "bandpass", 0, 0, 0},    
+    {LOWPASS_TASK,  lowpass_task,  800, 8, "lowpass",  0, 0, 0},
+    {HIGHPASS_TASK, highpass_task, 800, 8, "highpass", 0, 0, 0},
     {0,          0,          0,   0, 0,       0,                   0, 0}
 };
 
@@ -154,6 +153,45 @@ void init_adc(void) {
     reg_ptr -> ADC.CTRL1 = 0x2802;
 }
 
+void init_uart_isr ( void ){
+    //uartRegisterMask = ; //Unmask Fifo Full RX interrupt 
+    MCF_UART0_UMR2 |= MCF_UART_UMR_CM_NORMAL;	//Set loopback mode to normal
+    MCF_UART0_UIMR = MCF_UART_UIMR_FFULL_RXRDY; //Write value to register
+    //install interrupt vector
+    _int_install_isr(64+13, &uartISR, NULL); 
+
+    //unmask global interrupts
+    MCF_INTC0_IMRL &= ~( MCF_INTC_IMRL_MASKALL | MCF_INTC_IMRL_INT_MASK13);
+
+    //set priority and level
+    MCF_INTC0_ICR13 |= MCF_INTC_ICR_IP(0x5) | MCF_INTC_ICR_IL(0x5);	
+    	
+}
+
+//uartISR contains the interrupt service routine for the UART. 
+//This code will get you started but will not be enough for the project. 
+void uartISR ( void ){
+	TD_STRUCT_PTR td_ptr;
+    char q = 0;
+    _int_disable();
+
+    td_ptr = _task_get_td(handler_tid);
+    
+    //Check if the UART is ready to receive a character
+    if(MCF_UART0_USR & MCF_UART_USR_RXRDY){
+        q = MCF_UART0_URB; //Store character in RX buffer to q.
+        if (q > 0){
+            // q is a char we care about
+            append_buffer(q);
+			if (td_ptr != NULL){
+				_task_ready(td_ptr);
+                //printf("%c", q);
+			}
+        }
+    }
+    _int_enable();
+}
+
 // Adds an ADC sample to the circular buffers
 void add_sample(int sample) {
     sample_start = (sample_start + 1) % MAX_FILTER_LEN;
@@ -161,13 +199,37 @@ void add_sample(int sample) {
     sample_end = (sample_end + 1) % MAX_FILTER_LEN;
 }
 
+// Adds characters to a buffer to be processed
+void append_buffer(char c){
+
+    input_buffer_start = (input_buffer_start + 1) % MAX_BUFFER_LEN;
+    input_buffer[input_buffer_end] = c;
+    input_buffer_end = (input_buffer_end + 1) % MAX_BUFFER_LEN; //wrap around
+}
+
+char retrieve_char(void){
+    char c = 0;
+
+    c = input_buffer[input_buffer_start];
+    input_buffer_start = (input_buffer_start + 1) % MAX_BUFFER_LEN; //wrap around
+
+    return c;
+}
+
 void main_task(uint_32 initial_data) {
+
+    handler_tid = _task_create(0, HANDLER_TASK, 0);
+    if (handler_tid == MQX_NULL_TASK_ID){
+        printf("Unable to create handler task!\n");
+        _task_block();
+    }
 
     lowpass_tid = _task_create(0, LOWPASS_TASK, 0);
     if (lowpass_tid == MQX_NULL_TASK_ID){
         printf("Unable to create lowpass task!\n");
         _task_block();
     }
+
     highpass_tid = _task_create(0, HIGHPASS_TASK, 0);
     if (highpass_tid == MQX_NULL_TASK_ID){
         printf("Unable to create highpass task!\n");
@@ -180,20 +242,38 @@ void main_task(uint_32 initial_data) {
         _task_block();
     }
 
-
     init_adc();
     init_pins();
     init_qspi();
-
-    while(1) {
-        // hard coded for now, 
-        // TODO: take the filter type from command line
-        enabled_filter = lowpass;
-        _task_block();
-    }
+    init_uart_isr();
+    
+    _task_block();
 }
 
-void lowpass_task(uint_32 initial_data) {
+void handler_task(uint_32 initial_data) {
+    while (! (input_buffer_start != input_buffer_end)){
+        char c = retrieve_char();
+        char *string;
+        int input_channel;
+        int output_channel;
+
+        if (c > 0){
+            printf("%c", c);
+            if (c == '\r'){
+                sscanf(&input_buffer, "%s,%d,%d", &string, &input_channel, &output_channel);
+                if (strcmp(&string, "lowpass")){
+                    printf("%s\n", string);
+                } else {
+                    printf("ERROR: Unrecognized command!\n");
+                }
+            }
+        }
+    }
+    _task_block();
+}
+
+
+void lowpass_task() {
     int sum=0;
 
     while(1) {
@@ -209,7 +289,7 @@ void lowpass_task(uint_32 initial_data) {
     }
 }
 
-void highpass_task(uint_32 initial_data) {
+void highpass_task() {
     int sum=0;
 
     while(1) {
@@ -225,7 +305,7 @@ void highpass_task(uint_32 initial_data) {
     }
 }
 
-void bandpass_task(uint_32 initial_data) {
+void bandpass_task() {
     int sum=0;
 
     while(1) {
@@ -248,7 +328,7 @@ void isr_task(uint_32 initial_data) {
     TD_STRUCT_PTR   bandpass_td_ptr;
     MQX_TICK_STRUCT ticks;
     
-    lowpass_td_ptr = _task_get_td(lowpass_tid);
+    lowpass_td_ptr  = _task_get_td(lowpass_tid);
     highpass_td_ptr = _task_get_td(highpass_tid);
     bandpass_td_ptr = _task_get_td(bandpass_tid);
 
@@ -258,7 +338,7 @@ void isr_task(uint_32 initial_data) {
         // 200Hz sample frequency
         _time_add_usec_to_ticks(&ticks, 5000);
         _time_delay_until(&ticks);
-        
+
         // wait for the ADC to have a sample ready
         while(!((reg_ptr -> ADC.ADSTAT) & 0x0001));
         
@@ -268,25 +348,25 @@ void isr_task(uint_32 initial_data) {
         // Add sample to circular buffers
         add_sample(sample_read);
 
-        switch(enabled_filter) {
-            case lowpass:
+        //switch(enabled_filter) {
+            //case lowpass:
                 if (lowpass_td_ptr != NULL) {
 	                 _task_ready(lowpass_td_ptr);
 	            }
-                break;
-            case highpass:
+                //break;
+            //case highpass:
                 if (highpass_td_ptr != NULL) {
 	                 _task_ready(highpass_td_ptr);
 	            }
-                break;
-            case bandpass:
+                //break;
+            //case bandpass:
                 if (bandpass_td_ptr != NULL) {
 	                _task_ready(bandpass_td_ptr);
 	            }
-                break;
-            default:
-                break;
-        }
+                //break;
+            //default:
+                //break;
+        //}
     }
 }
 
@@ -324,7 +404,17 @@ void output_signal (int sum, channel_sel_t channel, filter_type_t filter_type){
   // all tasks fight for output, only enabled type can output
   if (enabled_filter == filter_type){
     // output the sum to the DAC
-    MCF_QSPI_QAR = 0x0000;
-    MCF_QSPI_QDR = ((int)sum | 0x3000);
+    switch (channel){
+        case channel_a:
+            MCF_QSPI_QAR = 0x0000;
+            MCF_QSPI_QDR = ((int)sum | 0x3000);
+            break;
+        case channel_b:
+            MCF_QSPI_QAR = 0x0000;
+            MCF_QSPI_QDR = ((int)sum | 0xB000);
+            break;
+        default:
+            break;
+    }
   }
 }
