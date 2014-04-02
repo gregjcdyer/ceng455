@@ -151,9 +151,9 @@ void init_adc(void) {
     reg_ptr -> ADC.POWER &= ~(MCF_ADC_POWER_APD | MCF_ADC_POWER_PD0);
     reg_ptr -> ADC.POWER |= MCF_ADC_POWER_PD1;
     while(MCF_ADC_POWER & MCF_ADC_POWER_PSTS0);
-    //reg_ptr -> ADC.CTRL2 = 0x0008;
+    reg_ptr -> ADC.CTRL2 = 0x0002;
     reg_ptr -> ADC.ADSDIS = 0x0000;
-    reg_ptr -> ADC.CTRL1 = 0x200A;
+    reg_ptr -> ADC.CTRL1 = 0x2002;
 }
 
 void init_uart_isr ( void ){
@@ -351,11 +351,37 @@ void isr_task(uint_32 initial_data) {
         _time_delay_until(&ticks);
 
         // wait for the ADC to have a sample ready
-        while(!((reg_ptr -> ADC.ADSTAT) & 0x0001));
+        while(!((reg_ptr -> ADC.ADSTAT) & 0x00FF));
         
-        // only for debugging purposes. 
-        sample_read = (uint_32)((reg_ptr -> ADC.ADRSLT[enabled_input]) >> 3);
-
+        // only for debugging purposes.
+        switch(enabled_input){
+            case 0:
+                sample_read = MCF_ADC_ADRSLT0 >> 3;//(uint_32)((reg_ptr -> ADC.ADRSLT[enabled_input]) >> 3);
+                break;
+            case 1:
+                sample_read = MCF_ADC_ADRSLT1 >> 3;//(uint_32)((reg_ptr -> ADC.ADRSLT[enabled_input]) >> 3);
+                break;
+            case 2:
+                sample_read = MCF_ADC_ADRSLT2 >> 3;//(uint_32)((reg_ptr -> ADC.ADRSLT[enabled_input]) >> 3);
+                break;
+            case 3:
+                sample_read = MCF_ADC_ADRSLT3 >> 3;//(uint_32)((reg_ptr -> ADC.ADRSLT[enabled_input]) >> 3);
+                break;
+            case 4:
+                sample_read = MCF_ADC_ADRSLT4 >> 3;//(uint_32)((reg_ptr -> ADC.ADRSLT[enabled_input]) >> 3);
+                break;
+            case 5:
+                sample_read = MCF_ADC_ADRSLT5 >> 3;//(uint_32)((reg_ptr -> ADC.ADRSLT[enabled_input]) >> 3);
+                break;
+            case 6:
+                sample_read = MCF_ADC_ADRSLT6 >> 3;//(uint_32)((reg_ptr -> ADC.ADRSLT[enabled_input]) >> 3);
+                break;
+            case 7:
+                sample_read = MCF_ADC_ADRSLT7 >> 3;//(uint_32)((reg_ptr -> ADC.ADRSLT[enabled_input]) >> 3);
+                break;
+            default:
+                break;
+        }
         // Add sample to circular buffers
         add_sample(sample_read);
 
